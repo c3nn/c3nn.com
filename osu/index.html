@@ -5,7 +5,7 @@
 	<link rel="icon" type="image/x-icon" href="assets/miniLogo.png">
 	<link rel="stylesheet" href="index.css">
 </head>
-<body>
+<body onload="document.querySelector('#loadingElement').remove();">
 	<div id="loadingElement" style="position: fixed; z-index: 99999; width: 100%; height: 100vh; background: #000000; color: #faebd7; text-align: center; padding-top: 46.5vh; font-size: 6vh;">hold up a minute it's loading<br><span style="position: relative; color: #514f4d; font-size: 3vh; top: -2.8vh;">(or it broke)</span></div>
 	<div class="centerX centerY">
 		<img id="playBg" src="assets/testBg.jpg" alt="playfield background">

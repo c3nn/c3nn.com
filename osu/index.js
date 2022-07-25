@@ -147,7 +147,6 @@ function initSongSelect()
 function init() // brov'
 {
 	closeOptions();
-	d.querySelector('#loadingElement').remove();
 	if(getCookie('lastScene')){
 		scene = getCookie('lastScene');
 	}
