@@ -1,4 +1,4 @@
-// bro contact me if you want some docs 
+// put in a pull request if you want docs, I ain't gana do them for myself
 
 function id(val){ return document.getElementById(val); }
 const d = document,
