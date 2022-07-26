@@ -16,9 +16,18 @@
 		</div>
 		<div class="headerBottom">
 			<div class="headerSelectors">
-				<a href="/osu"><span style="font-family: Aller;">osu!</span>online <span style="font-family: Teko; font-size: 1.6vh; margin-left: -0.8vh">//BETA</span></a>
+				<div class="headSelDiv first">
+					<a href="/osu"><span style="font-family: Aller;">osu!</span>online <span style="font-family: Teko; font-size: 1.6vh; margin-left: -0.8vh">//BETA</span></a>
+				</div>
+				<b class="selDivider"></b>
+				<div class="headSelDiv">
+					<a href="https://github.com/cconmann">GitHub</a>
+					<a href="https://codepen.io/conmann">CodePen</a>
+					<a href="https://g.dev/dcd">Google Devs</a>
+				</div>
 			</div>
 			<p>Projects</p>
+			<p class="label2">Links</p>
 		</div>
 	</header>
 	<h1 style="color: #c5c5c5;"><br><br><br><br><br>Still a work in progress<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>lol you thought</h1>
@@ -69,10 +78,6 @@
 		top: -5.7vh;
 		transition: height 0.2s, top 0.2s;
 	}
-	.header:hover > .headerBottom p{
-		top: -8vh;
-		transition: top 0.3s;
-	}
 	.logo{
 		display: flex;
 		justify-content: left;
@@ -87,15 +92,18 @@
 		color: #0c0b09;
 		text-decoration: none;
 	}
-	.headerBottom p{
+	.headerBottom p, .label2{
 		position: relative;
-		top: -2vh;
+		top: -8vh;
+		left: calc(50% - 8vh);
 		font-size: 2vh;
-		overflow: visible;
 		color: #a0a0a0;
 		font-family: Quicksand;
-		transition: top 0.65s;
-		transition-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
+		cursor: default;
+	}
+	.headerBottom p.label2{
+		left: calc(50% + 1vh);
+		top: -12.45vh;
 	}
 	.headerSelectors{
 		display: flex;
@@ -105,17 +113,36 @@
 		align-items: center;
 		white-space: nowrap;
 	}
-	.headerSelectors a{
-		margin-left: 10%;
-		margin-right: 10%;
+	.headSelDiv	{
+		width: calc(50% - 0.4vh);
+	}
+	.headSelDiv.first{
+		display: flex;
+		justify-content: right;
+	}
+	.headSelDiv a{
+		display: inline-block;
+		margin-left: 5vh;
+		margin-right: 5vh;
+		left: auto;
 		font-family: Quicksand;
 		font-size: 3vh;
 		color: #0c0b09;
 		text-decoration: none;
-		transition: all 1s;
+		transform: translateY(0vh);
+		transition: all 0.2s;
 	}
-	.headerSelectors a:hover{
-		text-shadow: 0 0 20px #000000;
+	.headSelDiv a:hover{
+		transform: translateY(-0.2vh);
+	}
+	.selDivider{
+		position: relative;
+		width: 0.15vh;
+		height: 77%;
+		border: solid transparent 0vh;
+		border-radius: 0.15vh;
+		background: #a0a0a0;
+		transform: skewX(-8deg);
 	}
 </style>
 </html>
