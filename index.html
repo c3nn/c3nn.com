@@ -10,7 +10,7 @@
 	<header class="header">
 		<div class="headerTop" style="cursor: default;">
 			<div class="logo">
-				<img src="a/logo.svg" alt="Logo" class="logoSvg" style="height: 5vh;">
+				<img id="logoSvg" src="a/spiff.svg" alt="Logo" class="logoSvg" style="height: 5vh;">
 				<t class="headerTitle">Conman.dev</t>
 			</div>
 		</div>
@@ -64,15 +64,6 @@
 		justify-content: center;
 		align-items: center;
 	}
-	.headerBottom{
-		display: block;
-		position: relative;
-		height: 0vh;
-		overflow: hidden;
-		background: #c5c5c5;
-		transition: height 0.6s, top 0.6s;
-		transition-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
-	}
 	.header:hover >	 .headerBottom{
 		height: 5.7vh;
 		top: -5.7vh;
@@ -92,57 +83,84 @@
 		color: #0c0b09;
 		text-decoration: none;
 	}
-	.headerBottom p, .label2{
-		position: relative;
-		top: -8vh;
-		left: calc(50% - 8vh);
-		font-size: 2vh;
-		color: #a0a0a0;
-		font-family: Quicksand;
-		cursor: default;
+	@media only screen and (min-width: 150vh){ /* Desktop */
+		.headerBottom{
+			display: block;
+			position: relative;
+			height: 0vh;
+			overflow: hidden;
+			background: #c5c5c5;
+			transition: height 0.6s, top 0.6s;
+			transition-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
+		}
+		.headerBottom p{
+			position: relative;
+			top: -8vh;
+			left: calc(50% - 8vh);
+			font-size: 2vh;
+			color: #a0a0a0;
+			font-family: Quicksand;
+			cursor: default;
+		}
+		.headerBottom p.label2{
+			left: calc(50% + 1vh);
+			top: -12.45vh;
+		}
+		.headerSelectors{
+			display: flex;
+			height: 100%;
+			width: 100%;
+			justify-content: center;
+			align-items: center;
+			white-space: nowrap;
+		}
+		.headSelDiv	{
+			width: calc(50% - 0.4vh);
+		}
+		.headSelDiv.first{
+			display: flex;
+			justify-content: right;
+		}
+		.headSelDiv a{
+			display: inline-block;
+			margin-left: 5vh;
+			margin-right: 5vh;
+			left: auto;
+			font-family: Quicksand;
+			font-size: 3vh;
+			color: #0c0b09;
+			text-decoration: none;
+			transform: translateY(0vh);
+			transition: transform 0.2s;
+		}
+		.headSelDiv a:hover{
+			transform: translateY(-0.2vh);
+		}
+		.selDivider{
+			position: relative;
+			width: 0.15vh;
+			height: 77%;
+			border: solid transparent 0vh;
+			border-radius: 0.15vh;
+			background: #a0a0a0;
+			transform: skewX(-8deg);
+		}
 	}
-	.headerBottom p.label2{
-		left: calc(50% + 1vh);
-		top: -12.45vh;
-	}
-	.headerSelectors{
-		display: flex;
-		height: 100%;
-		width: 100%;
-		justify-content: center;
-		align-items: center;
-		white-space: nowrap;
-	}
-	.headSelDiv	{
-		width: calc(50% - 0.4vh);
-	}
-	.headSelDiv.first{
-		display: flex;
-		justify-content: right;
-	}
-	.headSelDiv a{
-		display: inline-block;
-		margin-left: 5vh;
-		margin-right: 5vh;
-		left: auto;
-		font-family: Quicksand;
-		font-size: 3vh;
-		color: #0c0b09;
-		text-decoration: none;
-		transform: translateY(0vh);
-		transition: all 0.2s;
-	}
-	.headSelDiv a:hover{
-		transform: translateY(-0.2vh);
-	}
-	.selDivider{
-		position: relative;
-		width: 0.15vh;
-		height: 77%;
-		border: solid transparent 0vh;
-		border-radius: 0.15vh;
-		background: #a0a0a0;
-		transform: skewX(-8deg);
+	@media only screen and (max-width: 150vh){ /* Mobile */
+
 	}
 </style>
+<script>
+	console.log('looking in the inspecter are we?');
+	var date = new Date(),
+	month = date.getMonth(),
+	day = date.getDate();
+	if(month == 9){
+		document.querySelector('#logoSvg').src = 'a/spookySpiff.svg'
+	}else if(month == 11){
+		document.querySelector('#logoSvg').src = 'a/saintSpiff.svg'
+	}else if(month == 0 && day == 25){
+		document.querySelector('#logoSvg').src = 'a/irlSpiff.png'
+	}
+</script>
 </html>
