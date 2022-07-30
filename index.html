@@ -19,15 +19,15 @@
 				<div class="headSelDiv first">
 					<a href="/osu"><span style="font-family: Aller;">osu!</span>online <span style="font-family: Teko; font-size: 1.6vh; margin-left: -0.8vh">//BETA</span></a>
 				</div>
-				<b class="selDivider"></b>
+				<div class="selDivider"></div>
 				<div class="headSelDiv">
 					<a href="https://github.com/cconmann">GitHub</a>
 					<a href="https://codepen.io/conmann">CodePen</a>
 					<a href="https://g.dev/dcd">Google Devs</a>
 				</div>
 			</div>
-			<p>Projects</p>
-			<p style="left: calc(50% + 1vh); top: -12.45vh;">Links</p>
+			<label>Projects</label>
+			<label style="left: calc(50% - 7.25vh); top: -6vh;">Links</label>
 		</div>
 	</header>
 	<main>
@@ -98,9 +98,9 @@
 				transition: height 0.6s, top 0.6s;
 				transition-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
 			}
-			.headerBottom p{
+			.headerBottom label{
 				position: relative;
-				top: -8vh;
+				top: -6vh;
 				left: calc(50% - 8vh);
 				font-size: 2vh;
 				color: #a0a0a0;
@@ -148,7 +148,7 @@
 			}
 		}
 		@media only screen and (max-width: 150vh){ /* Mobile */
-			.headerBottom p{
+			.headerBottom label{
 				display: none;
 			}
 			.headerBottom{
@@ -204,6 +204,7 @@
 		height: 20vh;
 	}
 	.heroTitle{
+		margin: 0vh;
 		font-size: 10vh;
 	}
 </style>
