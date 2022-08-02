@@ -35,18 +35,22 @@
 			<section class="hero">
 				<h1 class="heroTitle">Welcome!<br><span id="welcomeSubTxt" style="font-size: 40px; position: relative; top: -100px; left: 14px"></span></h1>
 			</section>
-			<section class="heroTree">
-				<div class="grid">
-					
+			<fieldset class="about">
+				<legend>About</legend>
+			</fieldset>
+			<section class="heroArrow">
+				<div>
+					<label>></label>
 				</div>
 			</section>
 			<section class="interestCodepen">
 				<h1>May I interest you in some of my CodePen projects?</h1>
 				<div class="grid">
-					<iframe class="a" src="https://codepen.io/Conmann/embed/RwjEOEy?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
-					<iframe class="b" src="https://codepen.io/Conmann/embed/wvroZXo?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
-					<iframe class="c" src="https://codepen.io/Conmann/embed/eYRvgGg?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
-					<iframe class="d" src="https://codepen.io/Conmann/embed/NWadMRG?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
+					<iframe style="grid-column: 1 / 2;" src="https://codepen.io/Conmann/embed/RwjEOEy?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
+					<iframe style="grid-row: 1 / 2;" src="https://codepen.io/Conmann/embed/wvroZXo?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
+					<iframe style="grid-row: 2 / 3;" src="https://codepen.io/Conmann/embed/eYRvgGg?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
+					<iframe style="grid-row: 3 / 4;" src="https://codepen.io/Conmann/embed/NWadMRG?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
+					<iframe style="grid-column: 1 / 2; grid-row: 3 / 4;" src="https://codepen.io/Conmann/embed/abyzzeW?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
 				</div>
 			</section>
 		</main>
@@ -59,14 +63,15 @@
 		font-family: aller;
 		src: url(a/Aller.ttf);
 	}
+	*{
+		top: 0vh;
+		left: 0vh;
+		font-family: Quicksand;
+	}
+	:root{
+		background-color: #0c0b09;
+	}
 	@media screen { /* Header */
-		*{
-			top: 0vh;
-			left: 0vh;
-		}
-		:root{
-			background-color: #0c0b09;
-		}
 		header{
 			z-index: 999;
 			position: fixed;
@@ -80,7 +85,7 @@
 		}
 		.headerTop, .headerBottom{
 			display: flex;
-			background: #ffffff;
+			background: #f0f0f0;
 			height: 6vh;
 			width: 100%;
 			justify-content: center;
@@ -94,13 +99,15 @@
 			width: auto;
 		}
 		.headerTitle{
-			font-family: Quicksand;
 			margin-left: 1vh;
 			font-size: 3vh;
 			color: #0c0b09;
 			text-decoration: none;
 		}
 		@media only screen and (min-width: 150vh){ /* Desktop */
+			header{
+				position: absolute;
+			}
 			header:hover >	 .headerBottom{
 				height: 5.7vh;
 				top: -5.7vh;
@@ -121,7 +128,6 @@
 				left: calc(50% - 8vh);
 				font-size: 2vh;
 				color: #a0a0a0;
-				font-family: Quicksand;
 				cursor: default;
 			}
 			.headerSelectors{
@@ -144,7 +150,6 @@
 				margin-left: 5vh;
 				margin-right: 5vh;
 				left: auto;
-				font-family: Quicksand;
 				font-size: 3vh;
 				color: #0c0b09;
 				text-decoration: none;
@@ -187,7 +192,6 @@
 			.headSelDiv a{
 				display: inline-block;
 				left: auto;
-				font-family: Quicksand;
 				font-size: 3vh;
 				color: #0c0b09;
 				text-decoration: none;
@@ -223,58 +227,67 @@
 			width: 1200px;
 		}
 		.hero{
-			background: #a0a0a0;
+			background: #f0f0f0;
 			width: 100%;
 			height: 200px;
 			transform: skewX(-10deg);
+			border-radius: 10px;
 		}
 		.heroTitle{
 			margin: 0vh;
 			font-size: 120px;
-			font-family: Quicksand;
 			transform: skewX(10deg);
 			text-align: center;
 		}
-		.heroTree .grid{
+		.about *{
+			transform: skewX(-10deg);
+		}
+		.about{
 			margin-top: 20px;
-			display: grid;
+			border: solid #f0f0f0 2px;
+			border-radius: 10px;
+			width: 97.3%;
+			height: 200px;
+			transform: skewX(10deg);
+		}
+		.about legend{
+			font-size: 50px;
+			color: #f0f0f0;
+		}
+		.heroArrow{
 			width: 100%;
-			height: 700px;
-			background: rgb(64, 20, 20);
+			height: 100px;
+			color: #f0f0f0;
+			font-size: 100px;
+			margin-top: 400px;
+		}
+		.heroArrow div{
+			transform: rotate(90deg);
+			height: 100px;
+		}
+		.heroArrow div label{
+			padding-left: 500px;
 		}
 		.interestCodepen h1{
-			font-family: Quicksand;
 			font-size: 30px;
-			color: #c5c5c5;
+			color: #f0f0f0;
 		}
 		.interestCodepen .grid{
-			box-shadow: 0 0 1px 3px #ffffff;
+			box-shadow: 0 0 1px 3px #f0f0f0;
+			background: #f0f0f0;
 			display: grid;
 			width: 100%;
 			height: 1400px;
-			grid-template-columns: 54% auto;
+			grid-template-columns: 53% auto;
 			grid-template-rows: 33.3% 33.3% auto;
-			gap: 0px;
+			gap: 3px;
+			margin-bottom: 200px;
 		}
 		.interestCodepen .grid iframe{
 			width: 100%;
 			height: 100%;
-		}
-		.interestCodepen .grid .a{
-			grid-column: 1 / 2;
+			grid-column: 2 / 3;
 			grid-row: 1 / 3;
-		}
-		.interestCodepen .grid .b{
-			grid-column: 2 / 3;
-			grid-row: 1 / 2;
-		}
-		.interestCodepen .grid .c{
-			grid-column: 2 / 3;
-			grid-row: 2 / 3;
-		}
-		.interestCodepen .grid .d{
-			grid-column: 2 / 3;
-			grid-row: 3 / 4;
 		}
 	}
 	@media only screen and (max-width: 150vh){ /* Mobile */
@@ -295,7 +308,11 @@
 		'nice to see ya',
 		'this is it',
 		'<span style="font-size: 15px;">"welcome", UGH WHAT WAS I THINKING!!</span>',
-		'pet ur cat :)'
+		'pet ur cat :)',
+		'refresh to load another',
+		'error :)',
+		'loading...',
+		'<span style="font-size: 30px;">remember - opening a new tab is always faster than changing the url</span>'
 	];
 	document.querySelector('#welcomeSubTxt').innerHTML = wittyWelcomeTxt[Math.floor(Math.random() * wittyWelcomeTxt.length)];
 
