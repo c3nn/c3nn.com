@@ -10,7 +10,7 @@
 	<header onclick="if(window.innerWidth < 1300){ var h = document.querySelector('.headerBottom'); if(h.style.height == '12vh'){h.style.height = '0vh'; this.style.height = '6vh';}else{h.style.height = '12vh';this.style.height = '100vh';}}">
 		<div class="headerTop" style="cursor: default;">
 			<div class="logo">
-				<img id="logoSvg" src="a/spiff.svg" alt="Spiff, the face of Conman.dev" class="logoSvg" style="height: 5vh;">
+				<img id="logoSvg" src="/a/spiff.svg" alt="Spiff, the face of Conman.dev" class="logoSvg" style="height: 5vh;">
 				<t class="headerTitle">Conman.dev</t>
 			</div>
 		</div>
@@ -34,8 +34,19 @@
 	<div class="mainCenter">
 		<main>
 			<section class="hero">
-				<canvas id="hero"></canvas>
-				<h1 id="heroTxt">Conman.dev</h1>
+				<h1 class="heroTitle">Welcome!<br><span id="welcomeSubTxt" style="font-size: 40px; position: relative; top: -100px; left: 14px"></span></h1>
+			</section>
+			<fieldset class="about">
+				<legend>About</legend>
+				<p>
+					Hello! Im a website & app dev, I love pushing languages to their limits, thats why I use pure javascript. I have been know to use other languages like <a href="https://scratch.mit.edu/users/p_CONMAN_q/">Scratch</a> and 
+					<a href="https://wikipedia.org/wiki/IBM_BASIC">Basic</a>. I was having a nice time with codepen, then I wanted to use some iframes, codepen doesn't like iframes so now I can use all the iframes I want! (I also like cats and long walks on the beach)
+				</p>
+			</fieldset>
+			<section class="heroArrow">
+				<div>
+					<label>></label>
+				</div>
 			</section>
 			<section class="interestCodepen">
 				<h1>May I interest you in some of my CodePen projects?</h1>
@@ -47,9 +58,6 @@
 					<iframe style="grid-column: 1 / 2; grid-row: 3 / 4;" src="https://codepen.io/Conmann/embed/abyzzeW?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
 				</div>
 			</section>
-			<footer>
-				<label>Conmann ©1746</label>
-			</footer>
 		</main>
 	</div>
 </body>
@@ -58,7 +66,6 @@
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
-	@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 	@font-face {
 		font-family: aller;
 		src: url(a/Aller.ttf);
@@ -73,12 +80,12 @@
 	}
 	@media screen { /* Header */
 		header{
+			z-index: 999;
 			position: fixed;
 			flex-direction: column;
 			justify-content: left;
 			height: 6vh;
 			width: 100%;
-			z-index: 100;
 		}
 		header:hover{
 			height: 15vh;
@@ -227,29 +234,54 @@
 			width: 1200px;
 		}
 		.hero{
-			position: relative;
-			background-color: aquamarine;
-			left: -50px;
-			width: 1300px;
-			height: 600px;
-			margin-bottom: 350px;
-			overflow: hidden;
-		}
-		.hero canvas{
+			background: #f0f0f0;
 			width: 100%;
-			height: 100%;
-			background: #24211b;
-			z-index: 1;
+			height: 200px;
+			transform: skewX(-10deg);
+			border-radius: 10px;
 		}
-		.hero h1{
+		.heroTitle{
+			margin: 0vh;
+			font-size: 120px;
+			transform: skewX(10deg);
+			text-align: center;
+		}
+		.about *{
+			transform: skewX(-10deg);
+		}
+		.about{
+			margin-top: 20px;
+			border: solid #f0f0f0 2px;
+			border-radius: 10px;
+			width: 97.3%;
+			height: 200px;
+			transform: skewX(10deg);
+		}
+		.about legend{
+			font-size: 50px;
+			color: #f0f0f0;
+		}
+		.about p{
+			color: #f0f0f0;
 			position: relative;
-			color: #0c0b09;
-			font-size: 230px;
-			top: -430px;
-			left: 15px;
-			font-family: Lato;
-			cursor: default;
-			z-index: 0;
+			left: 14px;
+			top: -30px;
+			font-size: 26px;
+		}
+		.about p a{
+			color: #a0a0a0;
+			text-decoration: none;
+		}
+		.heroArrow{
+			width: 100%;
+			height: 100px;
+			color: #f0f0f0;
+			font-size: 100px;
+			margin-top: 400px;
+		}
+		.heroArrow div{
+			transform: rotate(90deg);
+			height: 100px;
 		}
 		.heroArrow div label{
 			padding-left: 500px;
@@ -275,19 +307,6 @@
 			grid-column: 2 / 3;
 			grid-row: 1 / 3;
 		}
-		footer{
-			background: #24211b;
-			width: 100%;
-			height: 16px;
-			margin-bottom: 0vh;
-		}
-		footer label{
-			position: relative;
-			top: -2px;
-			left: 2px;
-			color: #0c0b09;
-			font-size: 14px;
-		}
 	}
 	@media only screen and (max-width: 1300px){ /* Mobile */
 		main{
@@ -296,27 +315,34 @@
 	}
 </style>
 <script>
-	// header
-	var d = document,
-	date = new Date(),
+	var wittyWelcomeTxt = [
+		'congrats',
+		'you did it?',
+		'umm...',
+		'on with the tour',
+		'anyways...',
+		'you made it!',
+		"oh, so you're finally awake...",
+		'nice to see ya',
+		'this is it',
+		'<span style="font-size: 15px;">"welcome", UGH WHAT WAS I THINKING!!</span>',
+		'pet ur cat :)',
+		'refresh for more',
+		'error :)',
+		'loading...',
+		'<span style="font-size: 30px;">remember - opening a new tab is always faster than changing the url</span>'
+	];
+	document.querySelector('#welcomeSubTxt').innerHTML = wittyWelcomeTxt[Math.floor(Math.random() * wittyWelcomeTxt.length)];
+
+	var date = new Date(),
 	month = date.getMonth(),
 	day = date.getDate();
 	if(month == 9 && day >= 30){
-		d.querySelector('#logoSvg').src = 'a/spookySpiff.svg';
+		document.querySelector('#logoSvg').src = '/a/spookySpiff.svg';
 	}else if(month == 11){
-		d.querySelector('#logoSvg').src = 'a/saintSpiff.svg';
+		document.querySelector('#logoSvg').src = '/a/saintSpiff.svg';
 	}else if(month == 0 && day == 25){
-		d.querySelector('#logoSvg').src = 'a/irlSpiff.png';
+		document.querySelector('#logoSvg').src = '/a/irlSpiff.png';
 	}
-	
-	// hero
-	window.onscroll = function(){ d.querySelector('#heroTxt').style.top = window.pageYOffset / 8 - 430 + 'px'; };
-
-	var heroCanvas = d.querySelector('#hero'),
-	c = heroCanvas.getContext('2d');
-	function hero0(){
-		// coming soon
-	}
-	eval('hero' + Math.round(Math.random() * 1) + '()'); // "eval is evil", only when you let the user have it
 </script>
 </html>
