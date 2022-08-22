@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Conman.dev</title>
+	<META NAME="description" CONTENT="stop on by and take a gander">
 </head>
 <body>
 	<header onclick="if(window.innerWidth < 1300){ var h = document.querySelector('.headerBottom'); if(h.style.height == '12vh'){h.style.height = '0vh'; this.style.height = '6vh';}else{h.style.height = '12vh';this.style.height = '100vh';}}">
@@ -373,6 +374,9 @@
 		}
 	}
 	function hero1(){
+		c.clearRect(0, 0, 1300, 600);
+		heroCanvas.onclick = function(){};
+		heroCanvas.style.cursor = 'default';
 		var currentEl = 0,
 		currentLetter = -1;
 		heroTxt.style.fontFamily = 'arial';
@@ -398,6 +402,8 @@
 			}
 			if(currentEl == HERO_CSS.length){
 				clearInterval(txtUpdateLoop);
+				heroCanvas.onclick = function(){hero1()};
+				heroCanvas.style.cursor = 'pointer';
 				return;
 			}
 			if(typeof HERO_CSS[currentEl] === 'function'){
