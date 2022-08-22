@@ -1,4 +1,2 @@
 # Conman.dev
-**This is the home of the Conman.dev website along with any online projects I make including osu!online & MeasureFreedom.**
-
-// Probably also my soon to be portfolio, every dev needs a portfolio.
+**This is the home of the [Conman.dev website](https://conman.dev) along with any small web projects I make like [MeasureFreedom](https://conman.dev/mfree). If you are in search of [osu!online](https://osu.conman.dev) [it is in a diferent repo.](https://github.com/CConmann/osu-online)**
