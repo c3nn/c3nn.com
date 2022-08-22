@@ -17,7 +17,7 @@
 		<div class="headerBottom">
 			<div class="headerSelectors">
 				<div class="headSelDiv first">
-					<a href="/osu"><span style="font-family: Aller;">osu!</span>online <span style="font-family: Teko; font-size: 1.6vh; margin-left: -0.8vh">//BETA</span></a>
+					<a href="https://osu.conman.dev"><span style="font-family: Aller;">osu!</span>online <span style="font-family: Teko; font-size: 1.6vh; margin-left: -0.8vh">//BETA</span></a>
 					<a href="/mfree" style="font-family: roboto;">Measure Freedom<i style="font-family: roboto; font-size: 2vh;">.com</i></a>
 				</div>
 				<div class="selDivider"></div>
@@ -34,7 +34,7 @@
 	<div class="mainCenter">
 		<main>
 			<section class="hero">
-				<canvas id="hero"></canvas>
+				<canvas id="hero" width="1300" height="600"></canvas>
 				<h1 id="heroTxt">Conman.dev</h1>
 			</section>
 			<section class="interestCodepen">
@@ -54,6 +54,7 @@
 	</div>
 </body>
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
@@ -228,18 +229,20 @@
 		}
 		.hero{
 			position: relative;
-			background-color: aquamarine;
 			left: -50px;
 			width: 1300px;
 			height: 600px;
 			margin-bottom: 350px;
 			overflow: hidden;
+			background: #24211b;
+			z-index: 2;
 		}
 		.hero canvas{
+			position: relative;
 			width: 100%;
 			height: 100%;
-			background: #24211b;
-			z-index: 1;
+			background: transparent;
+			z-index: 3;
 		}
 		.hero h1{
 			position: relative;
@@ -249,7 +252,7 @@
 			left: 15px;
 			font-family: Lato;
 			cursor: default;
-			z-index: 0;
+			z-index: 1;
 		}
 		.heroArrow div label{
 			padding-left: 500px;
@@ -313,10 +316,98 @@
 	window.onscroll = function(){ d.querySelector('#heroTxt').style.top = window.pageYOffset / 8 - 430 + 'px'; };
 
 	var heroCanvas = d.querySelector('#hero'),
-	c = heroCanvas.getContext('2d');
+	c = heroCanvas.getContext('2d'),
+	heroTxt = d.querySelector('#heroTxt');
 	function hero0(){
-		// coming soon
+		heroCanvas.style.transform = 'rotateX(180deg)';
+		const tree0 = new Image(76, 138),
+		tree1 = new Image(76, 248),
+		tree2 = new Image(88, 414);
+		var trees = [],
+		littleMan = {
+			pos: 1400,
+		};
+		tree0.src = 'a/hero/tree0.png';
+		tree1.src = 'a/hero/tree1.png';
+		tree2.src = 'a/hero/tree2.png';
+
+		function renderTree(type,pos){
+			c.drawImage(eval('tree' + type), pos, 0);
+		}
+		function makeTree(){
+			let ranPos = Math.floor(Math.random() * 1212),
+			isColidding = false;
+			trees.forEach(tree => {
+				if(tree.pos > ranPos - 90 && tree.pos < ranPos + 90){
+					isColidding = true;
+				}
+			});
+
+			if(isColidding == false){
+				trees.push({
+					type: Math.floor(Math.random() * 3),
+					pos: ranPos
+				});
+			}
+		}
+		function updateMan(){
+			littleMan.pos -= 1;
+		}
+		function renderAll(){
+			c.clearRect(0, 0, 1300, 600);
+			trees.forEach(tree => {
+				renderTree(tree.type, tree.pos)
+			});
+			// c.beginPath();
+			// c.rect(littleMan.pos, 0, 26, 46);
+			// c.stroke();
+		}
+		seederInterval = setInterval(makeTree, 3000);
+		littleInterval = setInterval(updateMan, 10);
+		renderInterval = setInterval(renderAll, 10)
+
+		tree2.onload = function(){
+			for (let i = 0; i < 8; i++) {
+				makeTree();
+			}
+		}
 	}
-	eval('hero' + Math.round(Math.random() * 1) + '()'); // "eval is evil", only when you let the user have it
+	function hero1(){
+		var currentEl = 0,
+		currentLetter = -1;
+		heroTxt.style.fontFamily = 'arial';
+		heroTxt.style.fontSize = '50px';
+		heroTxt.style.left = '0px';
+		heroTxt.style.color = '#ffffff';
+		heroTxt.style.transition = 'left 0.2s, color 0.2s, font-size 0.2s';
+		var HERO_CSS = [
+		'.hero h1{',function(){},
+		' font-size: 230px;', function(){heroTxt.style.fontSize = '230px';},
+		' font-family: Lato;', function(){heroTxt.style.fontFamily = 'Lato';},
+		' color: #0c0b09;', function(){heroTxt.style.color = '#0c0b09';},
+		' left: 15px;', function(){heroTxt.style.left = '15px';},
+		'}'
+		];
+		c.font = '48px Recursive';
+		c.fillStyle = "#595243";
+		function txtUpdate(){
+			currentLetter++
+			if(currentLetter > HERO_CSS[currentEl].length){
+				currentEl++
+				currentLetter = 0;
+			}
+			if(currentEl == HERO_CSS.length){
+				clearInterval(txtUpdateLoop);
+				return;
+			}
+			if(typeof HERO_CSS[currentEl] === 'function'){
+				HERO_CSS[currentEl]();
+				currentEl++
+			}
+			c.fillText(HERO_CSS[currentEl].slice(0,currentLetter), 4, 40 + (currentEl * 24))
+		}
+		var txtUpdateLoop = setInterval(txtUpdate, 100);
+	}
+	eval('hero' + Math.floor(Math.random() * 2) + '()'); // "eval is evil", only when you let the user have it, ok
 </script>
 </html>
