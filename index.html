@@ -410,10 +410,39 @@
 				HERO_CSS[currentEl]();
 				currentEl++
 			}
-			c.fillText(HERO_CSS[currentEl].slice(0,currentLetter), 4, 40 + (currentEl * 24))
+			c.fillText(HERO_CSS[currentEl].slice(0,currentLetter), 4, 40 + (currentEl * 24));
 		}
 		var txtUpdateLoop = setInterval(txtUpdate, 100);
 	}
-	eval('hero' + Math.floor(Math.random() * 2) + '()'); // "eval is evil", only when you let the user have it, ok
+	function hero2(){
+		heroTxt.style.zIndex = '4';
+		heroCanvas.style.background = '#000';
+		heroTxt.style.color = '#080808';
+		var obj = [];
+		c.font = '20px arial';
+		function create(){
+			obj.push({
+				type: Math.round(Math.random()),
+				xpos: Math.round(Math.random()*1295),
+				ypos: 0
+			});
+		}
+		function render(){
+			c.fillStyle = 'rgba(0, 0, 0, 0.08)';
+			c.fillRect(0, 0, 1300, 600);
+			c.fillStyle = '#006400';
+			obj.forEach((e, index) => {
+				c.fillText(e.type, e.xpos, e.ypos);
+				e.ypos += 20;
+				if(e.ypos > 620){
+					obj.splice(index, 1);
+				}
+			});
+			console.log(obj.length);
+		}
+		var renderLoop = setInterval(render, 100),
+		createLoop = setInterval(create, 70);
+	}
+	eval('hero' + Math.floor(Math.random() * 3) + '()'); // "eval is evil", no >:(
 </script>
 </html>
