@@ -443,6 +443,52 @@
 		var renderLoop = setInterval(render, 100),
 		createLoop = setInterval(create, 70);
 	}
-	eval('hero' + Math.floor(Math.random() * 3) + '()'); // "eval is evil", no >:(
+	function hero3(){
+		const NAME = 'Conman.dev',
+		SPACINGS = [14,171,299,426,616,732,861,909,1038,1156],
+		HEIGHTS =  [174,125,125,125,125,125,31 ,176,124,122],
+		WIDTHS =   [140,115,93 ,155,93 ,93 ,27 ,108,107,128],
+		XOFFSETS = [8  ,5  ,13 ,13 ,8  ,13 ,8  ,5  ,5  ,-2],
+		YOFFSETS = [-5 ,-5 ,-5,-5 ,-5  ,-5 ,-5 ,-5 ,-5 ,-5];
+		heroTxt.remove();
+		var letters = [];
+		c.font = 'bold 235px Lato';
+		c.fillStyle = "#0c0b09";
+		for (let i = 0; i < 10; i++){
+			letters.push({
+				cont: NAME.slice(i,i+1),
+				bx: XOFFSETS[i],
+				by: YOFFSETS[i],
+				width: WIDTHS[i],
+				height: HEIGHTS [i],
+				x: SPACINGS[i],
+				xvol: (Math.random() * 4) - 2,
+				y: 594,
+				yvol: Math.random() * -2
+			});
+		}
+		function update(){
+			letters.forEach(el => {
+				el.y += el.yvol;
+				el.x += el.xvol;
+				if(el.x + el.bx < 0 || el.x + el.bx > 1300 - el.width){
+					el.xvol = el.xvol * -1;
+				}
+				if(el.y - el.by < 0 + el.height || el.y - el.by > 600){
+					el.yvol = el.yvol * -1;
+				}
+			});
+		}
+		function render(){
+			c.clearRect(0, 0, 1300, 600);
+			letters.forEach(el => {
+				c.fillText(el.cont, el.x, el.y);
+				// c.strokeRect(el.x + el.bx, el.y + -el.by, el.width + el.bx, -el.height + el.by);
+			});
+		}
+		var updateLoop = setInterval(update, 10),
+		renderLoop = setInterval(render, 10);
+	}
+	eval('hero' + Math.floor(Math.random() * 4) + '()'); // "eval is evil", no >:(
 </script>
 </html>
