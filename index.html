@@ -11,7 +11,7 @@
 	<header onclick="if(window.innerWidth < 1300){ var h = document.querySelector('.headerBottom'); if(h.style.height == '12vh'){h.style.height = '0vh'; this.style.height = '6vh';}else{h.style.height = '12vh';this.style.height = '100vh';}}">
 		<div class="headerTop" style="cursor: default;">
 			<div class="logo">
-				<img id="logoSvg" src="a/spiff.svg" alt="Spiff, the face of Conman.dev" class="logoSvg" style="height: 5vh;">
+				<img id="logoSvg" src="a/spiff.svg" alt="Spiff, we love Spiff" class="logoSvg" style="height: 5vh;">
 				<t class="headerTitle">Conman.dev</t>
 			</div>
 		</div>
@@ -41,11 +41,11 @@
 			<section class="interestCodepen">
 				<h1>May I interest you in some of my CodePen projects?</h1>
 				<div class="grid">
-					<iframe style="grid-column: 1 / 2;" src="https://codepen.io/Conmann/embed/RwjEOEy?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
-					<iframe style="grid-row: 1 / 2;" src="https://codepen.io/Conmann/embed/wvroZXo?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
-					<iframe style="grid-row: 2 / 3;" src="https://codepen.io/Conmann/embed/eYRvgGg?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
-					<iframe style="grid-row: 3 / 4;" src="https://codepen.io/Conmann/embed/NWadMRG?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
-					<iframe style="grid-column: 1 / 2; grid-row: 3 / 4;" src="https://codepen.io/Conmann/embed/abyzzeW?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true"></iframe>
+					<iframe style="grid-column: 1 / 2;" src="https://codepen.io/Conmann/embed/RwjEOEy?default-tab=result" frameborder="no" loading="lazy"></iframe>
+					<iframe style="grid-row: 1 / 2;" src="https://codepen.io/Conmann/embed/wvroZXo?default-tab=result" frameborder="no" loading="lazy"></iframe>
+					<iframe style="grid-row: 2 / 3;" src="https://codepen.io/Conmann/embed/eYRvgGg?default-tab=result" frameborder="no" loading="lazy"></iframe>
+					<iframe style="grid-row: 3 / 4;" src="https://codepen.io/Conmann/embed/NWadMRG?default-tab=result" frameborder="no" loading="lazy"></iframe>
+					<iframe style="grid-column: 1 / 2; grid-row: 3 / 4;" src="https://codepen.io/Conmann/embed/abyzzeW?default-tab=result" frameborder="no" loading="lazy"></iframe>
 				</div>
 			</section>
 			<footer>
@@ -217,84 +217,110 @@
 			}
 		}		
 	}
-	@media only screen and (min-width: 1300px){ /* Desktop */
-		.mainCenter{
-			position: absolute;
-			display: flex;
-			justify-content: center;
-			width: 100%;
-		}
-		main{
-			margin-top: calc(6vh + 20px);
-			width: 1200px;
-		}
-		.hero{
-			position: relative;
-			left: -50px;
-			width: 1300px;
-			height: 600px;
-			margin-bottom: 350px;
-			overflow: hidden;
-			background: #24211b;
-			z-index: 2;
-		}
-		.hero canvas{
-			position: relative;
-			width: 100%;
-			height: 100%;
-			background: transparent;
-			z-index: 3;
-		}
-		.hero h1{
-			position: relative;
-			color: #0c0b09;
-			font-size: 230px;
-			top: -430px;
-			left: 15px;
-			font-family: Lato;
-			cursor: default;
-			z-index: 1;
-		}
-		.heroArrow div label{
-			padding-left: 500px;
-		}
-		.interestCodepen h1{
-			font-size: 30px;
-			color: #f0f0f0;
-		}
-		.interestCodepen .grid{
-			box-shadow: 0 0 1px 3px #f0f0f0;
-			background: #f0f0f0;
-			display: grid;
-			width: 100%;
-			height: 1400px;
-			grid-template-columns: 53% auto;
-			grid-template-rows: 33.3% 33.3% auto;
-			gap: 3px;
-			margin-bottom: 200px;
-		}
-		.interestCodepen .grid iframe{
-			width: 100%;
-			height: 100%;
-			grid-column: 2 / 3;
-			grid-row: 1 / 3;
-		}
-		footer{
-			background: #24211b;
-			width: 100%;
-			height: 16px;
-			margin-bottom: 0vh;
-		}
-		footer label{
-			position: relative;
-			top: -2px;
-			left: 2px;
-			color: #0c0b09;
-			font-size: 14px;
-		}
+	/* Default */
+	.mainCenter{
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+	}
+	main{
+		margin-top: calc(6vh + 20px);
+		width: 1200px;
+	}
+	.hero{
+		position: relative;
+		left: -50px;
+		width: 1300px;
+		height: 600px;
+		margin-bottom: 350px;
+		overflow: hidden;
+		background: #24211b;
+		z-index: 2;
+	}
+	.hero canvas{
+		position: relative;
+		width: 100%;
+		height: 100%;
+		background: transparent;
+		z-index: 3;
+	}
+	.hero h1{
+		position: relative;
+		color: #0c0b09;
+		font-size: 230px;
+		top: -430px;
+		left: 15px;
+		font-family: Lato;
+		cursor: default;
+		z-index: 1;
+	}
+	.heroArrow div label{
+		padding-left: 500px;
+	}
+	.interestCodepen{
+		transform: scale(0.75);
+	}
+	.interestCodepen h1{
+		font-size: 30px;
+		color: #f0f0f0;
+	}
+	.interestCodepen .grid{
+		box-shadow: 0 0 1px 3px #f0f0f0;
+		background: #f0f0f0;
+		display: grid;
+		width: 1200px;
+		height: 1400px;
+		grid-template-columns: 53% auto;
+		grid-template-rows: 33.3% 33.3% auto;
+		gap: 3px;
+		margin-bottom: 200px;
+	}
+	.interestCodepen .grid iframe{
+		width: 100%;
+		height: 100%;
+		grid-column: 2 / 3;
+		grid-row: 1 / 3;
+	}
+	footer{
+		background: #24211b;
+		width: 100vw;
+		height: 16px;
+		position: absolute;
+		top: auto;
+		bottom: 0px;
+		left: 0px;
+	}
+	footer label{
+		position: relative;
+		top: -2px;
+		left: 2px;
+		color: #0c0b09;
+		font-size: 14px;
 	}
 	@media only screen and (max-width: 1300px){ /* Mobile */
 		main{
+			display: flex;
+			width: 100vw;
+			flex-direction: column;
+			align-content: center;
+			overflow: hidden;
+		}
+		.hero{
+			width: 100vw;
+			height: calc(100vw * 0.461);
+			left: 0px;
+		}
+		.hero canvas{
+			width: 100vw;
+			height: auto;
+		}
+		.hero h1{
+			font-size: 17.7vw;
+			top: -33.1vw;
+			left: 1.2vw;
+		}
+		.interestCodepen, footer{
 			display: none;
 		}
 	}
@@ -312,14 +338,57 @@
 	}else if(month == 0 && day == 25){
 		d.querySelector('#logoSvg').src = 'a/irlSpiff.png';
 	}
-	
+
 	// hero
-	window.onscroll = function(){ d.querySelector('#heroTxt').style.top = window.pageYOffset / 8 - 430 + 'px'; };
+	if(window.innerWidth > 1299){
+		window.onscroll = function(){ d.querySelector('#heroTxt').style.top = window.pageYOffset / 8 - 430 + 'px'; };
+	}
 
 	var heroCanvas = d.querySelector('#hero'),
 	c = heroCanvas.getContext('2d'),
 	heroTxt = d.querySelector('#heroTxt');
-	function hero0(){
+	function hero0(){ // live css
+		c.clearRect(0, 0, 1300, 600);
+		heroCanvas.onclick = function(){};
+		heroCanvas.style.cursor = 'default';
+		var currentEl = 0,
+		currentLetter = -1;
+		heroTxt.style.fontFamily = 'arial';
+		heroTxt.style.fontSize = '50px';
+		heroTxt.style.left = '0px';
+		heroTxt.style.color = '#ffffff';
+		heroTxt.style.transition = 'left 0.2s, color 0.2s, font-size 0.2s';
+		var HERO_CSS = [
+		'.hero h1{',function(){},
+		' font-size: 230px;', function(){heroTxt.style.fontSize = '230px';},
+		' font-family: Lato;', function(){heroTxt.style.fontFamily = 'Lato';},
+		' color: #0c0b09;', function(){heroTxt.style.color = '#0c0b09';},
+		' left: 15px;', function(){heroTxt.style.left = '15px';},
+		'}'
+		];
+		c.font = '48px Recursive';
+		c.fillStyle = "#595243";
+		function txtUpdate(){
+			currentLetter++
+			if(currentLetter > HERO_CSS[currentEl].length){
+				currentEl++
+				currentLetter = 0;
+			}
+			if(currentEl == HERO_CSS.length){
+				clearInterval(txtUpdateLoop);
+				heroCanvas.onclick = function(){hero1()};
+				heroCanvas.style.cursor = 'pointer';
+				return;
+			}
+			if(typeof HERO_CSS[currentEl] === 'function'){
+				HERO_CSS[currentEl]();
+				currentEl++
+			}
+			c.fillText(HERO_CSS[currentEl].slice(0,currentLetter), 4, 40 + (currentEl * 24));
+		}
+		var txtUpdateLoop = setInterval(txtUpdate, 100);
+	}
+	function hero1(){ // trees
 		heroCanvas.style.transform = 'rotateX(180deg)';
 		const tree0 = new Image(76, 138),
 		tree1 = new Image(76, 248),
@@ -373,48 +442,7 @@
 			}
 		}
 	}
-	function hero1(){
-		c.clearRect(0, 0, 1300, 600);
-		heroCanvas.onclick = function(){};
-		heroCanvas.style.cursor = 'default';
-		var currentEl = 0,
-		currentLetter = -1;
-		heroTxt.style.fontFamily = 'arial';
-		heroTxt.style.fontSize = '50px';
-		heroTxt.style.left = '0px';
-		heroTxt.style.color = '#ffffff';
-		heroTxt.style.transition = 'left 0.2s, color 0.2s, font-size 0.2s';
-		var HERO_CSS = [
-		'.hero h1{',function(){},
-		' font-size: 230px;', function(){heroTxt.style.fontSize = '230px';},
-		' font-family: Lato;', function(){heroTxt.style.fontFamily = 'Lato';},
-		' color: #0c0b09;', function(){heroTxt.style.color = '#0c0b09';},
-		' left: 15px;', function(){heroTxt.style.left = '15px';},
-		'}'
-		];
-		c.font = '48px Recursive';
-		c.fillStyle = "#595243";
-		function txtUpdate(){
-			currentLetter++
-			if(currentLetter > HERO_CSS[currentEl].length){
-				currentEl++
-				currentLetter = 0;
-			}
-			if(currentEl == HERO_CSS.length){
-				clearInterval(txtUpdateLoop);
-				heroCanvas.onclick = function(){hero1()};
-				heroCanvas.style.cursor = 'pointer';
-				return;
-			}
-			if(typeof HERO_CSS[currentEl] === 'function'){
-				HERO_CSS[currentEl]();
-				currentEl++
-			}
-			c.fillText(HERO_CSS[currentEl].slice(0,currentLetter), 4, 40 + (currentEl * 24));
-		}
-		var txtUpdateLoop = setInterval(txtUpdate, 100);
-	}
-	function hero2(){
+	function hero2(){ // matrix
 		heroTxt.style.zIndex = '4';
 		heroCanvas.style.background = '#000';
 		heroTxt.style.color = '#080808';
@@ -438,12 +466,11 @@
 					obj.splice(index, 1);
 				}
 			});
-			console.log(obj.length);
 		}
 		var renderLoop = setInterval(render, 100),
 		createLoop = setInterval(create, 70);
 	}
-	function hero3(){
+	function hero3(){ // bounce
 		const NAME = 'Conman.dev',
 		SPACINGS = [14,171,299,426,616,732,861,909,1038,1156],
 		HEIGHTS =  [174,125,125,125,125,125,31 ,176,124,122],
@@ -489,6 +516,6 @@
 		var updateLoop = setInterval(update, 10),
 		renderLoop = setInterval(render, 10);
 	}
-	eval('hero' + Math.floor(Math.random() * 4) + '()'); // "eval is evil", no >:(
+	eval('hero' + (Math.floor(Math.random() * (4 - (window.innerWidth < 1300 ? 1 : 0))) + (window.innerWidth < 1300 ? 1 : 0)) + '()'); // "eval is evil", no >:(
 </script>
 </html>
