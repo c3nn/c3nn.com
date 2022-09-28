@@ -284,16 +284,16 @@
 	}
 	footer{
 		background: #24211b;
-		width: 100vw;
+		width: calc(100vw - 15px);
 		height: 16px;
 		position: absolute;
 		top: auto;
 		bottom: 0px;
-		left: 0px;
 	}
 	footer label{
 		position: relative;
-		top: -2px;
+		top: auto;
+		bottom: 2px;
 		left: 2px;
 		color: #0c0b09;
 		font-size: 14px;
@@ -376,7 +376,7 @@
 			}
 			if(currentEl == HERO_CSS.length){
 				clearInterval(txtUpdateLoop);
-				heroCanvas.onclick = function(){hero1()};
+				heroCanvas.onclick = function(){hero0()};
 				heroCanvas.style.cursor = 'pointer';
 				return;
 			}
@@ -477,7 +477,7 @@
 		WIDTHS =   [140,115,93 ,155,93 ,93 ,27 ,108,107,128],
 		XOFFSETS = [8  ,5  ,13 ,13 ,8  ,13 ,8  ,5  ,5  ,-2],
 		YOFFSETS = [-5 ,-5 ,-5,-5 ,-5  ,-5 ,-5 ,-5 ,-5 ,-5];
-		heroTxt.remove();
+		heroTxt.style.display = 'none';
 		var letters = [];
 		c.font = 'bold 235px Lato';
 		c.fillStyle = "#0c0b09";
