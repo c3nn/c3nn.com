@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="icon" href="/a/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="a/favicon.ico" type="image/x-icon">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Conman.dev</title>
@@ -61,10 +61,7 @@
 	@import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-	@font-face {
-		font-family: aller;
-		src: url(a/Aller.ttf);
-	}
+	@font-face { font-family: aller; src: url(a/Aller.ttf); }
 	*{
 		top: 0vh;
 		left: 0vh;
@@ -401,9 +398,6 @@
 		tree1.src = 'a/hero/tree1.png';
 		tree2.src = 'a/hero/tree2.png';
 
-		function renderTree(type,pos){
-			c.drawImage(eval('tree' + type), pos, 0);
-		}
 		function makeTree(){
 			let ranPos = Math.floor(Math.random() * 1212),
 			isColidding = false;
@@ -412,29 +406,14 @@
 					isColidding = true;
 				}
 			});
-
 			if(isColidding == false){
 				trees.push({
-					type: Math.floor(Math.random() * 3),
 					pos: ranPos
 				});
+				c.drawImage(eval('tree' + Math.floor(Math.random() * 3)), ranPos, 0);
 			}
 		}
-		function updateMan(){
-			littleMan.pos -= 1;
-		}
-		function renderAll(){
-			c.clearRect(0, 0, 1300, 600);
-			trees.forEach(tree => {
-				renderTree(tree.type, tree.pos)
-			});
-			// c.beginPath();
-			// c.rect(littleMan.pos, 0, 26, 46);
-			// c.stroke();
-		}
-		seederInterval = setInterval(makeTree, 3000);
-		littleInterval = setInterval(updateMan, 10);
-		renderInterval = setInterval(renderAll, 10)
+		interval = setInterval(makeTree, 3000);
 
 		tree2.onload = function(){
 			for (let i = 0; i < 8; i++) {
