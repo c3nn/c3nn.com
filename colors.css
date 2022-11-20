@@ -1,0 +1,21 @@
+:root{
+	--background: #000000;
+	--accent1: #ffefdc;
+	--accent2: #000000;
+	--rgb1: #fd2020; 
+	--rgb2: #f97b13;
+	--rgb3: #eeff00;
+	--rgb4: #48f720;
+	--rgb5: #1aa4fa;
+}
+@media (prefers-color-scheme: dark) {
+	:root{
+		--accent1: #0c0b09;
+		--accent2: #ffefdc;
+		--rgb1: #c71b1b; 
+		--rgb2: #d16e1c;
+		--rgb3: #c9d61b;
+		--rgb4: #2ea713;
+		--rgb5: #106193;
+	}
+}

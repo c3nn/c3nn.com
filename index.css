@@ -1,0 +1,75 @@
+@font-face{
+	font-family: 'Bahnschrift';
+	src: local('Bahnschrift'), url('a/bahnschrift.ttf');
+}
+@font-face{
+	font-family: 'Aller';
+	src: url('a/Aller.ttf');
+}
+:root{
+	background: #000000;
+}
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.hero{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	background: var(--accent1);
+}
+.hero h1{
+	color: var(--accent2);
+	font-size: 32px;
+	font-family: Bahnschrift;
+}
+.hero div{
+	position: absolute;
+	width: 100vw;
+	height: 20vh;
+	left: 0px;
+	bottom: 0px;
+}
+.hero div.bottomBar{
+	position: absolute;
+	width: 100%;
+	height: 1vh;
+	overflow: hidden;
+	transition: height 0.2s ease-in-out;
+}
+.hero div:hover > .bottomBar{
+	height: 20vh;
+}
+.hero div .bottomBar .line{
+	position: absolute;
+	left: -30%;
+	top: 0px;
+	width: 26%;
+	height: 1vh;
+	animation: left-to-right 2s linear infinite;
+	animation-delay: var(--t);
+}
+@keyframes left-to-right {
+	0%{left: -30%;}
+	100%{left: 100%;}
+}
+.heroPagesCont{
+	position: absolute;
+	top: 1vh;
+	width: 100%;
+	height: 19vh;
+	background: var(--accent2);
+	overflow-y: scroll;
+	text-align: center;
+}
+.heroPagesCont a{
+	color: var(--accent1);
+	width: 100%;
+	font-size: 5.1vh;
+	font-family: Bahnschrift;
+	text-decoration: underline;
+}
