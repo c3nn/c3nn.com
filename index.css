@@ -14,10 +14,11 @@
 	padding: 0px;
 }
 .hero{
-	position: relative;
+	position: fixed;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	bottom: 0px;
 	width: 100vw;
 	height: 100vh;
 	background: var(--accent1);
