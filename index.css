@@ -47,6 +47,9 @@
 .hero div:hover > .bottomBar{
 	height: 20vh;
 }
+.bottomBar:has(.heroPagesCont a:focus){
+	height: 20vh;
+}
 .hero div .bottomBar .line{
 	position: absolute;
 	left: -30%;
@@ -60,7 +63,7 @@
 	0%{left: -30%;}
 	100%{left: 100%;}
 }
-.heroPagesCont{
+.hero div .heroPagesCont{
 	position: absolute;
 	top: 1vh;
 	width: 100%;
