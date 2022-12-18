@@ -29,7 +29,43 @@
 		</div>
 	</div>
 </div>
-<div style="position: fixed; bottom: 0px; display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; pointer-events: none;"> <!-- XMAS -->
+<canvas class="bgcanvas" id="canvas" width="1920" height="1080"></canvas>
+<script>
+	var canvas = document.querySelector("#canvas"),
+	c = canvas.getContext('2d'),
+	snowflakes = [];
+	window.onresize = function(){
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+	}
+	function createSnowflake(y){
+		snowflakes.push({
+			x: Math.random() * canvas.width,
+			y: y,
+			xvol: Math.random() - 0.5,
+			yvol: Math.random() + 1
+		})
+	}
+	while(snowflakes.length < 60){
+		createSnowflake(Math.random() * canvas.height);
+	}
+	setInterval(function(){
+		c.clearRect(0, 0, canvas.width, canvas.height)
+		c.beginPath();
+		snowflakes.forEach(function(e, index, object){
+			c.rect(e.x, e.y, 3, 3);
+			if(e.y > canvas.height){
+				snowflakes.splice(index, 1);
+				createSnowflake(0);
+			}
+			e.y += e.yvol;
+			e.x += e.xvol;
+		});
+		c.fillStyle = '#ffffff';
+		c.fill();
+	}, 10);
+</script>
+<div style="position: fixed; bottom: 0px; display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; pointer-events: none; z-index: 2;"> <!-- XMAS -->
 	<img src="a/xmasHat.png" alt="christmas hat" style="width: auto; height: 13px; position: relative; left: -62.5px; top: -11px;">
 </div>
 </body>

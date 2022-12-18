@@ -23,7 +23,9 @@
 	bottom: 0px;
 	width: 100vw;
 	height: 100vh;
-	background: var(--accent1);
+	/* background: var(--accent1); */
+	background: transparent;
+	z-index: 1;
 }
 .hero h1{
 	color: var(--accent2);
@@ -79,4 +81,12 @@
 	font-family: Bahnschrift;
 	font-weight: normal;
 	text-decoration: underline;
+}
+.bgcanvas{
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background: var(--accent1);
 }
