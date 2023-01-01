@@ -23,8 +23,7 @@
 	bottom: 0px;
 	width: 100vw;
 	height: 100vh;
-	/* background: var(--accent1); */
-	background: transparent;
+	background: var(--accent1);
 	z-index: 1;
 }
 .hero h1{
