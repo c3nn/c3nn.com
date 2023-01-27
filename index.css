@@ -9,49 +9,54 @@
 	font-display: swap;
 }
 :root{
-	background: #000000;
+	--background: #0c0b09;
+	--accent1: #ffefdc;
+	--accent2: #292929;
+	--rgb1: #c71b1b; 
+	--rgb2: #d16e1c;
+	--rgb3: #c9d61b;
+	--rgb4: #2ea713;
+	--rgb5: #106193;
+	background: var(--background);
 }
 *{
 	margin: 0px;
 	padding: 0px;
 }
-.hero{
+body{
 	position: fixed;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	bottom: 0px;
 	width: 100vw;
 	height: 100vh;
-	background: var(--accent1);
-	z-index: 1;
 }
-.hero h1{
-	color: var(--accent2);
+h1{
+	color: var(--accent1);
 	font-size: 32px;
 	font-family: Bahnschrift;
 }
-.hero div{
+div{
 	position: absolute;
 	width: 100vw;
 	height: 20vh;
 	left: 0px;
 	bottom: 0px;
 }
-.hero div.bottomBar{
+div.bottomBar{
 	position: absolute;
 	width: 100%;
 	height: 1vh;
 	overflow: hidden;
 	transition: height 0.2s ease-in-out;
 }
-.hero div:hover > .bottomBar{
+div:hover > .bottomBar{
 	height: 20vh;
 }
-.bottomBar:has(.heroPagesCont a:focus){
+.bottomBar:has(.links a:focus){
 	height: 20vh;
 }
-.hero div .bottomBar .line{
+div .bottomBar .line{
 	position: absolute;
 	left: -30%;
 	top: 0px;
@@ -64,7 +69,7 @@
 	0%{left: -30%;}
 	100%{left: 100%;}
 }
-.hero div .heroPagesCont{
+div .links{
 	position: absolute;
 	top: 1vh;
 	width: 100%;
@@ -73,8 +78,8 @@
 	overflow-y: scroll;
 	text-align: center;
 }
-.heroPagesCont a{
-	color: var(--accent1);
+.links a{
+	color: var(--background);
 	width: 100%;
 	font-size: 5.1vh;
 	font-family: Bahnschrift;
@@ -87,5 +92,5 @@
 	position: fixed;
 	top: 0px;
 	left: 0px;
-	background: var(--accent1);
+	background: var(--background);
 }
