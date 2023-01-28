@@ -8,6 +8,8 @@ c = can.getContext('2d');
 var isHoveringLinks = false;
 if(navigator.userAgent.match(/Android/i)||navigator.userAgent.match(/webOS/i)||navigator.userAgent.match(/iPhone/i)||navigator.userAgent.match(/iPad/i)||navigator.userAgent.match(/iPod/i)||navigator.userAgent.match(/BlackBerry/i)||navigator.userAgent.match(/Windows Phone/i)||window.innerWidth/window.innerHeight < 0.75){
 	document.querySelector('body, body *').onclick = function(){if(isHoveringLinks == true){isHoveringLinks = false;}else{isHoveringLinks = true;}}
+	can.style.pointerEvents = 'all';
+	var mobileMode = true;
 }else{
 	const links = document.querySelector('.links, .links *');
 	links.onmouseover = function(){isHoveringLinks = true;};
@@ -41,6 +43,7 @@ updateInterval = setInterval(() => {
 			addHeight += (addHeight > 0.02?addHeight:0.02) * 0.2;
 			if(addHeight > 0.97){
 				wasOnTop = true;
+				if(mobileMode){can.style.pointerEvents = 'none';}
 			}
 		}else{
 			addHeight = addHeight * 0.85;
@@ -53,6 +56,7 @@ updateInterval = setInterval(() => {
 			addHeight += (addHeight > 0.02?addHeight:0.02) * 0.2;
 			if(addHeight > 0.97){
 				wasOnTop = false;
+				if(mobileMode){can.style.pointerEvents = 'all';}
 			}
 		}
 	}
