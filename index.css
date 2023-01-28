@@ -10,13 +10,7 @@
 }
 :root{
 	--background: #0c0b09;
-	--accent1: #ffefdc;
-	--accent2: #292929;
-	--rgb1: #c71b1b; 
-	--rgb2: #d16e1c;
-	--rgb3: #c9d61b;
-	--rgb4: #2ea713;
-	--rgb5: #106193;
+	--accent: #999999;
 	background: var(--background);
 }
 *{
@@ -24,7 +18,6 @@
 	padding: 0px;
 }
 body{
-	position: fixed;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -32,50 +25,17 @@ body{
 	height: 100vh;
 }
 h1{
-	color: var(--accent1);
-	font-size: 32px;
+	color: var(--accent);
+	font-size: 50px;
 	font-family: Bahnschrift;
 }
-div{
-	position: absolute;
-	width: 100vw;
-	height: 20vh;
+.links{
+	position: fixed;
+	width: 100%;
+	height: 25vh;
 	left: 0px;
 	bottom: 0px;
-}
-div.bottomBar{
-	position: absolute;
-	width: 100%;
-	height: 1vh;
-	overflow: hidden;
-	transition: height 0.2s ease-in-out;
-}
-div:hover > .bottomBar{
-	height: 20vh;
-}
-.bottomBar:has(.links a:focus){
-	height: 20vh;
-}
-div .bottomBar .line{
-	position: absolute;
-	left: -30%;
-	top: 0px;
-	width: 26%;
-	height: 1vh;
-	animation: left-to-right 2s linear infinite;
-	animation-delay: var(--t);
-}
-@keyframes left-to-right {
-	0%{left: -30%;}
-	100%{left: 100%;}
-}
-div .links{
-	position: absolute;
-	top: 1vh;
-	width: 100%;
-	height: 19vh;
-	background: var(--accent2);
-	overflow-y: scroll;
+	background: var(--accent);
 	text-align: center;
 }
 .links a{
@@ -84,13 +44,15 @@ div .links{
 	font-size: 5.1vh;
 	font-family: Bahnschrift;
 	font-weight: normal;
+	text-decoration: none;
+}
+.links .social a{
 	text-decoration: underline;
 }
-.bgcanvas{
-	width: 100vw;
-	height: 100vh;
+.bottomBarCanvas{
 	position: fixed;
-	top: 0px;
 	left: 0px;
-	background: var(--background);
+	bottom: 0px;
+	pointer-events: none;
+	height: 25vh;
 }
