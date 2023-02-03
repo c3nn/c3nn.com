@@ -9,9 +9,8 @@
 	font-display: swap;
 }
 :root{
-	/* --background: rgb(12, 11, 9); */
 	--background: #000000;
-	--accent: #999999;
+	--accent: #222222;
 	background: var(--background);
 }
 *{
@@ -27,7 +26,7 @@ body{
 	height: 100vh;
 }
 h1{
-	color: var(--background);
+	color: var(--accent);
 	font-size: 50px;
 	font-family: Bahnschrift;
 }
