@@ -10,13 +10,10 @@ window.onresize = updateSize;
 updateSize();
 
 function update(t){
-	// c.clearRect(0,0,can.width,can.height);
-	// c.globalAlpha = 0.4;
 	c.fillStyle = 'rgba(0,0,0,0.1)'
 	c.fillRect(0,0,can.width,can.height);
-	// c.beginPath();
 	var x = 0;
-	while (x < can.width) {
+	while (x-15 < can.width) {
 		function equation(x,t){
 			return ((can.height/2)+(Math.sin(x+t/100)*(can.height/6)));
 		}
@@ -27,7 +24,6 @@ function update(t){
 		c.stroke();
 		x += 15;
 	}
-	// c.stroke();
 }
 var timeFromStart = 0;
 var updateInterval = setInterval(() => {
