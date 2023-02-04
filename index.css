@@ -1,11 +1,11 @@
 @font-face{
 	font-family: 'Bahnschrift';
-	src: url('a/bahnschrift.ttf');
+	src: url('https://c3nn.com/a/bahnschrift.ttf');
 	font-display: swap;
 }
 @font-face{
 	font-family: 'Aller';
-	src: url('a/Aller.ttf');
+	src: url('https://c3nn.com/a/Aller.ttf');
 	font-display: swap;
 }
 :root{
@@ -26,7 +26,7 @@ h1{
 	position: fixed;
 	color: var(--accent);
 	font-size: 50px;
-	font-family: 'Bahnschrift', 'Arial';
+	font-family: 'Bahnschrift' !important;
 	width: 100vw;
 	text-align: center;
 	bottom: calc(50vh - 30px);
