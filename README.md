@@ -1,2 +1,2 @@
-# Conman.dev
-**This is the home of the [Conman.dev website](https://conman.dev) along with any small web projects I make like [toWashingmachines](https://conman.dev/toWashingmachines). If you are in search of [osu!online](https://osu.conman.dev) [it is in a diferent repo.](https://github.com/CConmann/osu-online)**
+# c3nn.com
+**This is the home of the [c3nn.com website](https://c3nn.com) along with any small web projects I make like [toWashingmachines](https://c3nn.com/toWashingmachines).**
