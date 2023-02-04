@@ -1,3 +1,4 @@
+var potatoMode = (navigator.userAgent.match(/Android/i)||navigator.userAgent.match(/webOS/i)||navigator.userAgent.match(/iPhone/i)||navigator.userAgent.match(/iPad/i)||navigator.userAgent.match(/iPod/i)||navigator.userAgent.match(/BlackBerry/i)||navigator.userAgent.match(/Windows Phone/i)||window.innerWidth/window.innerHeight < 0.75 ? true : false);
 var colors = ['#c71b1b', '#d16e1c', '#c9d61b', '#2ea713', '#106193'];
 
 const date = new Date();

@@ -60,6 +60,8 @@ h1{
 	width: 100vw;
 }
 .bgCanvas{
+	position: fixed;
+	bottom: 0px;
 	height: 100vh;
 	z-index: -1;
 }

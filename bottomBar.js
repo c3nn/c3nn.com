@@ -60,29 +60,30 @@ updateInterval = setInterval(() => {
 	phaseNum += (8+addMomentum)*(can.width/2560);
 	render(phaseNum,0.03+addHeight,wasOnTop);
 }, 10);
+if(potatoMode == false){
+		function mouseMoveHandle(event){
+		event = event || window.event;
+		if (event.pageX == null && event.clientX != null) {
+			const eventDoc = (event.target && event.target.ownerDocument) || document,
+			doc = eventDoc.documentElement,
+			body = eventDoc.body;
 
-function mouseMoveHandle(event){
-	event = event || window.event;
-	if (event.pageX == null && event.clientX != null) {
-		const eventDoc = (event.target && event.target.ownerDocument) || document,
-		doc = eventDoc.documentElement,
-		body = eventDoc.body;
+			event.pageX = event.clientX +
+				(doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+				(doc && doc.clientLeft || body && body.clientLeft || 0);
+			event.pageY = event.clientY +
+				(doc && doc.scrollTop  || body && body.scrollTop  || 0) -
+				(doc && doc.clientTop  || body && body.clientTop  || 0 );
+		}
 
-		event.pageX = event.clientX +
-			(doc && doc.scrollLeft || body && body.scrollLeft || 0) -
-			(doc && doc.clientLeft || body && body.clientLeft || 0);
-		event.pageY = event.clientY +
-			(doc && doc.scrollTop  || body && body.scrollTop  || 0) -
-			(doc && doc.clientTop  || body && body.clientTop  || 0 );
+		if(event.pageY > window.innerHeight * 0.75){
+			isHoveringLinks = true;
+		}else{
+			isHoveringLinks = false;
+		}
+
 	}
-
-	if(event.pageY > window.innerHeight * 0.75){
-		isHoveringLinks = true;
-	}else{
-		isHoveringLinks = false;
-	}
-
+	window.onmousemove = mouseMoveHandle;
 }
-window.onmousemove = mouseMoveHandle;
 
 })();

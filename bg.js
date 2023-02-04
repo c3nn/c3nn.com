@@ -10,8 +10,12 @@ window.onresize = updateSize;
 updateSize();
 
 function update(t){
-	c.fillStyle = 'rgba(0,0,0,0.1)'
-	c.fillRect(0,0,can.width,can.height);
+	if(potatoMode == true){
+		c.clearRect(0,0,can.width,can.height);
+	}else{
+		c.fillStyle = 'rgba(0,0,0,0.1)'
+		c.fillRect(0,0,can.width,can.height);
+	}
 	var x = 0;
 	while (x-15 < can.width) {
 		function equation(x,t){
