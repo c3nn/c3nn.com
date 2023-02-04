@@ -19,16 +19,17 @@
 }
 body{
 	position: fixed;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	width: 100vw;
 	height: 100vh;
 }
 h1{
+	position: fixed;
 	color: var(--accent);
 	font-size: 50px;
-	font-family: Bahnschrift;
+	font-family: 'Bahnschrift', 'Arial';
+	width: 100vw;
+	text-align: center;
+	bottom: calc(50vh - 30px);
 }
 .links{
 	display: none;
@@ -44,7 +45,7 @@ h1{
 	color: var(--background);
 	width: 100%;
 	font-size: 5.1vh;
-	font-family: Bahnschrift;
+	font-family: 'Bahnschrift';
 	font-weight: normal;
 	text-decoration: none;
 }
