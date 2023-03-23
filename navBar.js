@@ -1,7 +1,7 @@
 (function(){
 
 const height = 0.25,
-can = document.querySelector('.bottomBarCanvas'),
+can = document.querySelector('.navBarCanvas'),
 c = can.getContext('2d'),
 links = document.querySelector('.links, .links *');
 var isHoveringLinks = false;

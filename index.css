@@ -10,7 +10,8 @@
 }
 :root{
 	--background: #000000;
-	--accent: #222222;
+	--accent: #333333;
+	--white: #e2dbcc;
 	background: var(--background);
 }
 *{
@@ -22,14 +23,16 @@ body{
 	width: 100vw;
 	height: 100vh;
 }
-h1{
+.title{
 	position: fixed;
-	color: var(--accent);
+	color: var(--white);
 	font-size: 50px;
 	font-family: 'Bahnschrift' !important;
+	font-weight: 400;
 	width: 100vw;
 	text-align: center;
 	bottom: calc(50vh - 30px);
+	text-shadow: #000000 0px 0px 5px;
 }
 .links{
 	display: none;
@@ -52,7 +55,7 @@ h1{
 .links .social a{
 	text-decoration: underline;
 }
-.bottomBarCanvas, .bgCanvas{
+.navBarCanvas, .bgCanvas{
 	position: fixed;
 	left: 0px;
 	bottom: 0px;
