@@ -1,5 +1,7 @@
 (function(){
 
+if(potatoMode == true){return;}
+
 const can = document.querySelector('.bgCanvas'),
 c = can.getContext('2d');
 function updateSize(){
@@ -33,6 +35,5 @@ var updateInterval = setInterval(() => {
 	update(timeFromStart);
 	timeFromStart++
 }, 10);
-
 
 })();

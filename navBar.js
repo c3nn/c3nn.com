@@ -4,6 +4,7 @@ const height = 0.25,
 can = document.querySelector('.navBarCanvas'),
 c = can.getContext('2d'),
 links = document.querySelector('.links, .links *');
+links.style.display = 'none'
 var isHoveringLinks = false;
 document.querySelector('body, body *').onclick = function(){if(isHoveringLinks == true){isHoveringLinks = false;}else{isHoveringLinks = true;}}
 function updateSize(){
@@ -61,7 +62,7 @@ updateInterval = setInterval(() => {
 	render(phaseNum,0.03+addHeight,wasOnTop);
 }, 10);
 if(potatoMode == false){
-		function mouseMoveHandle(event){
+	function mouseMoveHandle(event){
 		event = event || window.event;
 		if (event.pageX == null && event.clientX != null) {
 			const eventDoc = (event.target && event.target.ownerDocument) || document,
