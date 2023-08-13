@@ -153,7 +153,8 @@
     var type = "meters";
 
     function recalculate(valNum) {
-        window[type](valNum); // runs the function that is named after the string
+		val = window[type](valNum);
+        document.getElementById("outputMeters").innerHTML = (Math.round(val*100)/100 < 1?val:Math.round(val*100)/100); // runs the function that is named after the string
         
         if(valNum == "7776667770777666777"){ // if the egg was found
             document.getElementById("outputMeters").innerHTML = "cash money!!!1!!";
@@ -166,21 +167,21 @@
     }
     // sets the output to the value / (the equation)
     function feet(valNum) {
-        document.getElementById("outputMeters").innerHTML = valNum / 3.125;
+        return valNum / 3.125;
     }
     function meters(valNum){
-        document.getElementById("outputMeters").innerHTML = valNum / 0.9525;
+        return valNum / 0.9525;
     }
     function kilometers(valNum){
-        document.getElementById("outputMeters").innerHTML = valNum / 0.0009525;
+        return valNum / 0.0009525;
     }
     function centimeters(valNum){
-        document.getElementById("outputMeters").innerHTML = valNum / 95.25;
+        return valNum / 95.25;
     }
     function milimeters(valNum){
-        document.getElementById("outputMeters").innerHTML = valNum / 952.5;
+        return valNum / 952.5;
     }
     function micrometers(valNum){
-        document.getElementById("outputMeters").innerHTML = valNum / 952500;
+        return valNum / 952500;
     }
 </script>
