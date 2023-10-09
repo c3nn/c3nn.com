@@ -52,7 +52,9 @@ body{
 	text-decoration: none;
 }
 .links .social a{
-	text-decoration: underline;
+	text-decoration: underline wavy;
+	text-decoration-thickness: 3px;
+	/* color: #bb4b00; */
 }
 .navBarCanvas, .bgCanvas{
 	position: fixed;
