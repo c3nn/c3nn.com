@@ -13,16 +13,21 @@
 			<h1><span>My</span>Archive<span style="position: absolute; bottom: 0px; font-size: 20px; width: 100%;">By & to, me</span></h1>
 			
 			<h2>List of past portfolios</h2>
-			<a href="OG/"><span>OG / <span title="Domain registered">July 20, 2022</span> - <span title="Day before first redesign commit">Nov 19, 2022</span></span></a><br>
+			<a href="OG/"><span>OG / <span title="Domain registered">July 20, 2022</span> - <span title="Day before first redesign commit">Nov 19, 2022</span></span></a>
 			<a href="/"><span>barred / <span title="First Commit">Nov 20, 2022</span> - <span title="Still used, for now...">Today</span></span></a>
 			
 			<h2>List of past projects</h2>
 			
 			<h3 style="margin-top: 0px;">Web development</h3>
-			<a href="https://codepen.io/c3nn">Codepen</a><br>
-			<a href="\proj/toWashingmachines">toWashingmachines</a><br>
-			<a href="https://osu.c3nn.com">osu!online</a><br>
-			<a href="https://stratii.c3nn.com">stratii</a>
+			<a href="https://codepen.io/c3nn">Codepen</a>
+			<a href="\proj/toWashingmachines">toWashingmachines</a>
+			<a href="https://osu.c3nn.com">osu!online</a>
+			<div class="inset">
+				<a href="https://stratii.c3nn.com">stratii</a>
+				<a href="stratii/stratii 3-25-2023/">stratii / Mar 25, 2023</a>
+				<a href="stratii/stratii 4-16-2023/">stratii / Apr 16, 2023</a>
+			</div>
+			<a href="https://notwikipedia.org">NOTwikipedia</a>
 			
 			<h3>Miscellaneous</h3>
 			<a href="https://www.youtube.com/watch?v=ozoGn50h_J0">Bad Apple!! in steam showcase</a>
@@ -49,11 +54,17 @@
 	}
 	main{
 		width: 1280px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		/* margin-bottom: 100px; */
+		margin-bottom: 40px;
 	}
 	h1{
 		position: relative;
 		right: 23px;
 		font-size: 150px;
+		margin-top: 0px;
 	}
 	h1, #homeButton{
 		font-family: "DM Serif Display";
@@ -94,6 +105,20 @@
 		font-family: "DM Serif Text";
 		color: var(--accent);
 		text-decoration: underline wavy var(--accent2) 1px;
+	}
+	.inset{
+		display: flex;
+		flex-direction: column;
+		border-left: solid 2px var(--accent2);
+		text-align: left;
+		width: max-content;
+		margin: 10px 0px 10px 0px;
+	}
+	.inset > *:first-child{
+		border-bottom: solid 2px var(--accent2);
+	}
+	.inset > *{
+		margin-left: 10px;
 	}
 </style>
 </html>
