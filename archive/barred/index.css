@@ -1,11 +1,11 @@
 @font-face{
 	font-family: 'Bahnschrift';
-	src: url('https://c3nn.com/a/bahnschrift.ttf');
+	src: url('a/bahnschrift.ttf');
 	font-display: swap;
 }
 @font-face{
 	font-family: 'Aller';
-	src: url('https://c3nn.com/a/Aller.ttf');
+	src: url('a/Aller.ttf');
 	font-display: swap;
 }
 :root{
