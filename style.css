@@ -2,16 +2,18 @@
 /* @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap');
 :root{
-	--background: #030100;
+	--bg: #030100;
+	--bgAccent0: #060606;
+	--bgAccent1: #252525;
 	--accent0: #ffd4ac;
 	--accent1: #d8a473;
 	--text: var(--accent0);
 	--rgb0: #c71b1b;
-	--rgb1: #d16e1c;
-	--rgb2: #c9d61b;
-	--rgb3: #389922;
+	--rgb1: #cd732a;
+	--rgb2: #cfd941;
+	--rgb3: #449a31;
 	--rgb4: #106193;
-	background: var(--background);
+	background: var(--bg);
 	/* color: #fff0e1; */
 	color: var(--accent0);
 	font-family: 'Red Hat Text', sans-serif;
@@ -49,13 +51,53 @@ h1 .atText{
 h1 .atSymbol:hover{
 	color: var(--accent1);
 }
-/* written so that both light up together, I know it's bad */
+/* written so that both light up together, I know it's not optimized */
 h1:has(.n1:hover) .n1{ color: var(--rgb0); }
 h1:has(.n2:hover) .n2{ color: var(--rgb4); }
 h1:has(.n3:hover) .n3{ color: var(--rgb3); }
 
-/** General */
+/** Footer */
+footer{
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	padding: 6px;	
+	border: solid var(--bgAccent0) 3px;
+	border-radius: 100px;
+}
 
+/** Lines */
+#linesCont{
+	--_speed: 1.5s;
+	--_lines: 5;
+	--_lineHeight: 500px;
+	--_inline: 50px;
+	width: 500px;
+	height: var(--_lineHeight);
+	/* outline: 10px red solid; */
+	position: fixed;
+	top: -265px;
+	right: -265px;
+}
+@keyframes linesLeftToRight {
+	0% {left: calc(var(--_width) * -1);}
+	100% {left: 100%;}
+}
+@keyframes linesTopToTop {
+	0% {height: var(--_lineHeight);}
+	50% {height: calc(var(--_lineHeight) - var(--_inline));}
+	100% {height: var(--_lineHeight);}
+}
+#linesCont .line{
+	--_width: calc(100% / (var(--_lines) - 1));
+	width: var(--_width);
+	bottom: 0px;
+	position: absolute;
+	animation: linesLeftToRight var(--_speed) linear infinite, linesTopToTop var(--_speed) ease-in-out infinite;
+	animation-delay: calc(var(--n) * var(--_speed) / var(--_lines));
+}
+
+/** General */
 .pageSpace{
 	display: flex;
 	width: 0px;
