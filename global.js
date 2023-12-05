@@ -25,12 +25,10 @@ linesHoverCont.addEventListener('click', (e) => {
 	let canRun = true;
 	$all('#linesCont .line').forEach(element => {
 		if(getComputedStyle(element).width == '0px'){
-			canRun = false
+			canRun = false;
 		}
 	});
-	if(canRun == false){
-		return;
-	}
+	if(canRun == false){ return; }
 	
 	linesCont.dataset.anim = "closed";
 	$('#linesMenuContCont').className = "Open";
@@ -49,8 +47,7 @@ linesHoverCont.addEventListener('click', (e) => {
 			1800
 		);
 		element.addEventListener('animationiteration', (e) => {
-			// starts negative so it plays aninimation before
-			// page loads and uses --n2 after menu opens
+			// starts negative so it plays aninimation before page loads and uses --n2 after menu opens
 			element.css('--n','var(--n2)');
 		}, {once: true});
 	});
@@ -59,12 +56,10 @@ $('#linesMenuClose').addEventListener('click', () => {
 	let canRun = true;
 	$all('#linesCont .line').forEach(element => {
 		if(getComputedStyle(element).width != '0px'){
-			canRun = false
+			canRun = false;
 		}
 	});
-	if(canRun == false){
-		return;
-	}
+	if(canRun == false){ return; }
 
 	$all('#linesMenuContCont #linesMenuCont .line .miniLine').forEach(element => {
 		element.animate(
@@ -91,5 +86,4 @@ $('#linesMenuClose').addEventListener('click', () => {
 
 window.addEventListener('scroll', (e) => {
 	css('--HeroScrollPer',Math.min(window.scrollY/(window.innerHeight/2),1));
-	css('--ScrollY',window.scrollY);
 });

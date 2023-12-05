@@ -11,10 +11,10 @@
 }
 
 /*
-	* HAY this is a little area for design guidelines
+	* HAY this is a little area for code / design guidelines
 
 	I. 	capitalize first letter of css --var if controlled by JS
-			ex: --ScrollY
+			ex: --HeroScrollPer
 		Or is a descripter included for another class
 			ex: #hero h1 .Blue{} && #hero h1 .Red{} || #menu.Open && #menu.Closed
 	
@@ -33,7 +33,6 @@
 :root{
 	/* Controlled by JS */
 	--HeroScrollPer: 0;
-	--ScrollY: 0;
 
 	/* Colores */
 	--bg: #030100;
@@ -49,11 +48,14 @@
 	--rgb3: #449a31;
 	--rgb4: #106193;
 
+	--mw: min(1600px, 90vw); /* persentage of the main width */
+
 	background: var(--bg);
 	color: var(--accent0);
 	font-family: 'Red Hat Text', sans-serif;
 	padding: 0px;
 	margin: 0px;
+	overflow-x: hidden;
 }
 body{
 	padding: 0px;
@@ -65,7 +67,7 @@ body{
 	width: 100%;
 }
 main{
-	width: 1600px;
+	width: var(--mw);
 }
 ::-webkit-scrollbar{
 	background: var(--bgAccent0);
@@ -185,18 +187,11 @@ footer{
 }
 
 /** Lines Menu */
-#linesMenuContCont{
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	height: 100%;
-	width: 100%;
-	display: flex;
-	justify-content: left;
-	align-items: center;
-}
 #linesMenuCont{
 	--_menuOptions: 5;
+	position: fixed;
+	top: 0px;
+	left: 0px;
 	height: 100%;
 	width: auto;
 	display: flex;
@@ -206,7 +201,7 @@ footer{
 	pointer-events: all;
 }
 #linesMenuCont .line{
-	--_width: 35svw;
+	--_width: 35vw;
 	--_miniLines: 4;
 	--_totalMiniLines: calc(var(--_menuOptions) * var(--_miniLines));
 	position: relative;
@@ -274,7 +269,7 @@ footer{
 	pointer-events: none;
 }
 #linesMenuContCont.Closed #linesMenuCont .line{
-	left: calc(var(--_width) * -1.15);
+	left: calc((var(--_width) * -1) - 6vh);
 	transition: left 1s cubic-bezier(1,0,.76,.75);
 }
 #linesMenuContCont.Open #linesMenuCont .line{
@@ -288,30 +283,33 @@ footer{
 	animation-delay: 0s,
 					calc((var(--tn) / var(--_totalMiniLines) * var(--_speed)) + var(--_firstAnimDuration));
 }
-#linesMenuContCont.Closed #linesMenuClose{
-	display: none;
-}
 #linesMenuClose{
+	position: fixed;
+	top: 0px;
+	left: 0px;
 	width: 100%;
 	height: 100%;
 }
-
-/*! fix the left menu at lowser resolutions closed  */
+#linesMenuContCont.Closed #linesMenuClose{
+	display: none;
+}
 
 /** General */
 .pageSpace{
 	display: flex;
 	width: 0px;
-	height: 200px;
+	height: var(--h, 200px);
 }
 a:any-link{
 	color: var(--text);
 	text-decoration: underline wavy;
+	/* text-decoration-thickness: calc(0.002 * var(--mw)); */
+	text-decoration-thickness: 0.1em;
 }
 a:visited{
 	text-decoration-color: var(--accent1);
 }
-h1 a{
+h1 a, h2 a, h3 a{
 	text-decoration: underline;
 	text-decoration-color: var(--bgAccent1);
 }
@@ -331,16 +329,24 @@ h1 a{
 	outline: solid 4px var(--bgAccent1);
 	border-radius: 5138008px;
 }
-h1{
-	font-size: 100px;
+h1, h2, h3{
+	font-size: calc(0.06 * var(--mw));
 	font-family: 'Lobster', sans-serif;
 	font-style: italic;
 	font-weight: 100;
+	margin: 0px;
 	margin-bottom: 20px;
 	cursor: default;
 }
+h2, h3{
+	font-size: calc(0.03 * var(--mw));
+	margin-bottom: 10px;
+}
+h3{
+	font-size: calc(0.02 * var(--mw));
+}
 p{
-	font-size: 20px;
+	font-size: calc(0.015 * var(--mw));
 	font-family: 'Victor Mono';
 	font-style: italic;
 }
