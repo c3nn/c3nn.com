@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
 
+:root{
+	--HeroScrollPer: 0;
+}
+
 /** Hero */
 #hero{
 	display: flex;
@@ -41,29 +45,43 @@
 #hero h1:has(.n2:hover) .n2{ color: var(--rgb4); }
 #hero h1:has(.n3:hover) .n3{ color: var(--rgb3); }
 
-@keyframes heroInfoBelowFade {
+@keyframes heroInfoFade {
 	from{opacity: calc(10 - var(--ScrollY));}
 	to	{opacity: 0;}
 }
-#heroInfoBelow{
+#heroInfoBelow, #heroInfoMenu{
 	pointer-events: none;
 	position: absolute;
 	bottom: 0px;
 	text-align: center;
-	animation: heroInfoBelowFade 10s forwards;
+	animation: heroInfoFade 10s forwards;
 }
 @keyframes heroInfoBelowArrowBounce {
 	0%{bottom: 0px;}
 	50%{bottom: 7px;}
 	100%{bottom: 0px;}
 }
-#heroInfoBelow .symbol{
+#heroInfoBelow .symbol, #heroInfoMenu .symbol{
 	position: relative;
 	animation: heroInfoBelowArrowBounce 1s cubic-bezier(.3,1.5,1,.91) infinite;
 }
+@keyframes heroInfoMenuArrowBounce {
+	0%{left: 0px;}
+	50%{left: 7px;}
+	100%{left: 0px;}
+}
+#heroInfoMenu{
+	bottom: auto;
+	top: 30vh;
+	right: calc(0.08 * var(--mw));
+}
+#heroInfoMenu .symbol{
+	animation-name: heroInfoMenuArrowBounce;
+}
 
-#heroUnslant{
-
+#heroAccesMenu{
+	position: absolute;
+	bottom: calc(-0.03 * var(--mw));
 }
 
 /* line decor */
@@ -90,7 +108,7 @@
 	justify-content: left;
 	align-items: center;
 	width: 100%;
-	height: var(--h, 350px);
+	height: var(--h, calc(0.25 * var(--mw)));
 	margin-bottom: 25px;
 }
 .iframeProjShowcase.Right{
@@ -144,13 +162,4 @@
 	top: 0px;
 	animation: scrollbarCubedSpan var(--_time) infinite linear;
 	animation-delay: calc((var(--_time) / var(--_items)) * var(--n) * -1);
-}
-
-/* .fillHeight, like the hero filling the entire screen */
-.fillHeight{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 100vh;
 }

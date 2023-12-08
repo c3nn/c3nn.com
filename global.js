@@ -83,7 +83,3 @@ $('#linesMenuClose').addEventListener('click', () => {
 		element.dataset.anim = '';
 	});
 });
-
-window.addEventListener('scroll', (e) => {
-	css('--HeroScrollPer',Math.min(window.scrollY/(window.innerHeight/2),1));
-});
