@@ -45,6 +45,30 @@
 #hero h1:has(.n2:hover) .n2{ color: var(--rgb4); }
 #hero h1:has(.n3:hover) .n3{ color: var(--rgb3); }
 
+#heroBg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: calc(100svh + (0.1 * var(--mw)));
+	z-index: -1;
+}
+#heroBgCanvas{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+#heroBg .fade{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: calc(0.1 * var(--mw));
+	background: linear-gradient(180deg, transparent, var(--bg));
+}
+
 @keyframes heroInfoFade {
 	from{opacity: calc(10 - var(--ScrollY));}
 	to	{opacity: 0;}
