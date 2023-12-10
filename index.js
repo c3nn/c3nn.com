@@ -23,6 +23,7 @@ unslantButtons.forEach(element => {
 
 window.addEventListener('scroll', (e) => {
 	css('--HeroScrollPer',Math.min(window.scrollY/(window.innerHeight/2),1));
+	css('--ScrollY',window.scrollY);
 });
 
 // 🥚

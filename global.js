@@ -83,3 +83,21 @@ $('#linesMenuClose').addEventListener('click', () => {
 		element.dataset.anim = '';
 	});
 });
+
+// 🥚
+$('#spinStarEgg').addEventListener('contextmenu',(e) => {
+	e.preventDefault();
+	$('#spinStarEgg').title = 'weeeee!'
+	$('#spinStarEgg').animate(
+		[
+			{
+				rotate: '20deg',
+				easing: 'cubic-bezier(.3,1,1,1)',
+			},
+			{
+				rotate: '380deg',
+			}
+		],
+		1000
+	);
+});
