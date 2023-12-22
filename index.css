@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
-
 :root{
 	--HeroScrollPer: 0;
 	--ScrollY: 0;
@@ -117,6 +115,16 @@
 	align-items: center;
 	position: absolute;
 	bottom: calc(-0.03 * var(--mw));
+	gap: calc(0.005 * var(--mw));
+	border-radius: 5318008px;
+	background: var(--bgAccent1);
+	overflow: visible;
+}
+#heroAccesMenu .symbol{
+	font-size: 100%;
+}
+:root[data-contrast] * #heroAccesMenu .symbol{
+	color: var(--bgAccent0);
 }
 
 /* line decor */
@@ -157,6 +165,50 @@
 	height: 100%;
 	border: solid calc(0.002 * var(--mw)) var(--bgAccent1);
 	border-radius: calc(0.005 * var(--mw));
+	position: relative;
+	--z: 1; /* zoom (2 = double the resolution) */
+}
+.iframeProjShowcase .iframeCont iframe{
+	position: absolute;
+	/** x */
+	--posFix: calc(((((var(--z) * 100) / 2) * -1) + 50) * 1%);
+	scale: calc(1 / var(--z));
+	width: calc(var(--z) * 100%);
+	height: calc(var(--z) * 100%);
+	left: var(--posFix);
+	top: var(--posFix);
+}
+.iframeProjShowcase .iframeCont .zoomCont{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 15%;
+	height: 10%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 1%;
+	margin-bottom: 1%;
+}
+.iframeProjShowcase .iframeCont .zoomCont input{
+	height: 100%;
+	width: 100%;
+	background: #00000020;
+	/* background-image: url('a/materialSymbols[-/+].svg'); */
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
+	border: none;
+}
+.iframeProjShowcase .iframeCont .zoomCont .minus{
+	border-radius: 20% 0 0 20%;
+	background-image: url('a/materialSymbolsRemove.svg');
+}
+.iframeProjShowcase .iframeCont .zoomCont .plus{
+	border-radius: 0 20% 20% 0;
+	background-image: url('a/materialSymbolsAdd.svg');
 }
 .iframeProjShowcase .text{
 	position: relative;
@@ -197,4 +249,47 @@
 	top: 0;
 	animation: scrollbarCubedSpan var(--_time) infinite linear;
 	animation-delay: calc((var(--_time) / var(--_items)) * var(--n) * -1);
+}
+
+@media screen and (orientation: portrait) {
+
+	#linesCont{
+		--_contHeight: 100svh;
+	}
+
+	.iframeProjShowcase, .iframeProjShowcase.Right{
+		flex-direction: column;
+		height: auto;
+	}
+	.iframeProjShowcase .text{
+		width: 100%;
+	}
+	.iframeProjShowcase .iframeCont:not(.DoubleRes){
+		position: relative;
+		height: auto;
+		width: 100%;
+		aspect-ratio: 16/9;
+	}
+	.iframeProjShowcase .iframeCont:not(.DoubleRes) iframe{
+		/* scale: 0.25;
+		width: 400%;
+		height: 400%;
+		top: -150%;
+		left: -150%; */
+		position: absolute;
+		scale: 0.5;
+		width: 200%;
+		height: 200%;
+		top: -50%;
+		left: -50%;
+	}
+
+	#scrollbarCubed:after{
+		content: "";
+	}
+	#scrollbarCubed span{
+		position: static;
+		animation: none;
+	}
+
 }

@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Conmann @c3nn</title>
-	<link rel="shortcut icon" href="./a/favicon.png" type="image/x-icon">
-	<link rel="stylesheet" href="./global.css">
-	<link rel="stylesheet" href="./index.css">
+	<link rel="shortcut icon" href="/a/favicon.png" type="image/x-icon">
+	<link rel="stylesheet" href="/global.css">
+	<link rel="stylesheet" href="/index.css">
 </head>
 <body>
 	<div id="mainCont">
@@ -28,10 +28,13 @@
 					<span>Menu</span> <span class="symbol">keyboard_double_arrow_right</span>
 				</span>
 				<div id="heroAccesMenu">
-					<div class="unslantCont">
-						<span>Don't like the cursive font? <input type="button" value="OFF"></span>
+					<div class="accesCont Unslant">
+						<span>Cursive font? <input type="button" value="OFF"></span>
 					</div>
 					<span class="symbol">accessibility_new</span>
+					<div class="accesCont Contrast">
+						<span>Reduced contrast? <input type="button" value="OFF"></span>
+					</div>
 				</div>
 			</section>
 			<div class="pageSpace" style="--h: calc(0.05 * var(--mw));"></div>
@@ -39,7 +42,11 @@
 				<h1>May I introduce you to my old games?</h1>
 				<section class="iframeProjShowcase Left">
 					<div class="iframeCont">
-						<iframe src="./proj/codepen/100perTextSnake/index.html" loading="lazy" tabindex="-1" frameborder="0" width="100%" height="100%"></iframe>
+						<iframe src="/proj/codepen/100perTextSnake/index.html" loading="lazy" tabindex="-1" frameborder="0" width="100%" height="100%"></iframe>
+						<div class="zoomCont">
+							<input class="minus" type="button" value="">
+							<input class="plus" type="button" value="">
+						</div>
 					</div>
 					<div class="text">
 						<h2><a href="https://codepen.io/c3nn/details/xxrPZdR">100% text Snake</a></h2>
@@ -48,8 +55,12 @@
 					</div>
 				</section>
 				<section class="iframeProjShowcase Left">
-					<div class="iframeCont">
-						<iframe src="./proj/codepen/Wordle/index.html" loading="lazy" tabindex="-1" frameborder="0" width="200%" height="200%" style="scale: 0.5;position: relative;left: -50%;top: -50%;"></iframe>
+					<div class="iframeCont" style="--z: 2.1;">
+						<iframe src="/proj/codepen/Wordle/index.html" loading="lazy" tabindex="-1" frameborder="0" width="100%" height="100%"></iframe>
+						<div class="zoomCont">
+							<input class="minus" type="button" value="">
+							<input class="plus" type="button" value="">
+						</div>
 					</div>
 					<div class="text">
 						<h2><a href="https://codepen.io/c3nn/details/RwjEOEy">Wordle</a></h2>
@@ -59,12 +70,16 @@
 				</section>
 				<section class="iframeProjShowcase Left">
 					<div class="iframeCont">
-						<iframe src="./proj/codepen/Sticks/index.html" loading="lazy" tabindex="-1" frameborder="0" width="100%" height="100%"></iframe>
+						<iframe src="/proj/codepen/Sticks/index.html" loading="lazy" tabindex="-1" frameborder="0" width="100%" height="100%"></iframe>
+						<div class="zoomCont">
+							<input class="minus" type="button" value="">
+							<input class="plus" type="button" value="">
+						</div>
 					</div>
 					<div class="text">
 						<h2><a href="https://codepen.io/c3nn/details/abyzzeW">Sticks, Chopsticks, Calculator...</a></h2>
 						<p class="dateMade">oct.2021</p>
-						<p>Ahhh, a playground clasic: now just with real sticks... or as close to sticks as css can get. It may go by many names but we all play the same.</p>
+						<p>Ahhh, a playground classic: now just with real sticks... or as close to sticks as css can get.</p>
 					</div>
 				</section>
 			</section>
@@ -73,27 +88,39 @@
 				<h1>Or maybe some of my Scrollbars?</h1>
 				<section class="iframeProjShowcase Right">
 					<div class="iframeCont">
-						<iframe style="pointer-events: none;" loading="lazy" src="./proj/codepen/textScrollbar/" scrolling="no" frameborder="0" width="100%" height="100%"></iframe>
+						<iframe style="pointer-events: none;" loading="lazy" src="/proj/codepen/textScrollbar/" scrolling="no" frameborder="0" width="100%" height="100%"></iframe>
+						<div class="zoomCont">
+							<input class="minus" type="button" value="">
+							<input class="plus" type="button" value="">
+						</div>
 					</div>
 					<div class="text">
 						<h2><a href="https://codepen.io/c3nn/details/eYRvgGg">text Scrollbar</a></h2>
 						<p class="dateMade">sep.2021</p>
-						<p>My first project on Codepen, man its janky but since I've learned better (but does anyone know how to center a div?).</p>
+						<p>My first project on Codepen, man it's janky but since I've learned better (but does anyone know how to center a div?).</p>
 					</div>
 				</section>
 				<section class="iframeProjShowcase Right">
 					<div class="iframeCont">
-						<iframe style="pointer-events: none;" loading="lazy" src="./proj/codepen/circleScrollbar/" scrolling="no" frameborder="0" width="100%" height="100%"></iframe>
+						<iframe style="pointer-events: none;" loading="lazy" src="/proj/codepen/circleScrollbar/" scrolling="no" frameborder="0" width="100%" height="100%"></iframe>
+						<div class="zoomCont">
+							<input class="minus" type="button" value="">
+							<input class="plus" type="button" value="">
+						</div>
 					</div>
 					<div class="text">
 						<h2><a href="https://codepen.io/c3nn/details/wvroZXo">Circle Scrollbar</a></h2>
 						<p class="dateMade">dec.2021</p>
-						<p>Taken inspiration from a unnamed online store sharing its name with a jungle's support page; I created this and it's somehow the most popular one, which to be fair I never want to work with radians in JS again.</p>
+						<p>Taking inspiration from a unnamed online store sharing its name with a jungle's support page; I created this and it's somehow the most popular one, which to be fair I never want to work with radians in JS again.</p>
 					</div>
 				</section>
 				<section class="iframeProjShowcase Right">
 					<div class="iframeCont">
-						<iframe style="pointer-events: none;" loading="lazy" src="./proj/codepen/scrollbarCubed/" scrolling="no" frameborder="0" width="100%" height="100%"></iframe>
+						<iframe style="pointer-events: none;" loading="lazy" src="/proj/codepen/scrollbarCubed/" scrolling="no" frameborder="0" width="100%" height="100%"></iframe>
+						<div class="zoomCont">
+							<input class="minus" type="button" value="">
+							<input class="plus" type="button" value="">
+						</div>
 					</div>
 					<div class="text">
 						<a href="https://codepen.io/c3nn/details/NWadMRG"><h2 id="scrollbarCubed" style="cursor: pointer; width: 75%;margin-left: auto;margin-right: 0;"><span style="--n: 0;">Scrollbar in a </span><span style="--n: 1;">Scrollbar in a </span><span style="--n: 2;">Scrollbar in a </span></h2></a>
@@ -104,13 +131,19 @@
 			</section>
 			<div class="pageSpace"></div>
 			<section class="lineDecor Left Right" style="--c: var(--rgb3);">
-				<div class="flexTemplate">
-					<!-- Conmann, 2023 -->
-				</div>
+				<p style="text-align: center;">
+					<br>
+					Happy Holidays :)<br>
+					<br>
+				</p>
 			</section>
 			<div class="pageSpace" style="--h: calc(0.05 * var(--mw));"></div>
 			<footer>
-				<span>Hero Background by <a href="https://e4494s.neocities.org/generative-art-gallery#:~:text=Remnants%20of%20Attraction">e4494s</a></span>
+				<span>Made with 100% farm fresh, pure Javascript & 100% sustainable CSS</span>
+				<div class="flexTemplate Column">
+					<span>Hero Background by <a href="https://e4494s.neocities.org/generative-art-gallery#:~:text=Remnants%20of%20Attraction">e4494s</a></span>
+					<a href="https://fonts.google.com">Fonts && Icons By Google</a>
+				</div>
 				<div class="flexTemplate" style="gap: calc(0.005 * var(--mw));">
 					<a href="https://twitter.com/imConmann" class="socialButton" title="𝕏/imConmann">
 						<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -144,15 +177,20 @@
 						<span id="spinStarEgg" class="symbol" title="★ Recommended ★" style="position: absolute; color: var(--rgb2); top: -10%; right: -20%; rotate: 20deg;">star</span>
 					</a>
 				</div>
-				<div class="flexTemplate">
-					<span class="symbol circleButtonHighlight" style="font-size: calc(0.02 * var(--mw)); margin-right: calc(0.01 * var(--mw)); padding: calc(0.01 * var(--mw)); padding-top: 0; padding-bottom: 0;" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">arrow_upward_alt</span>
-					<span class="unslantCont">
-						<span>Don't like the cursive font? <input type="button" value="OFF"></span>
-					</span>
+				<div class="flexTemplate Column">
+					<a href="/snoozefest/cookiePolicy">Cookie Policy</a>
+					<sub><a href="https://github.com/c3nn/.com/blob/redesign/LICENSE">Copyleft <span style="display: inline-block; rotate: 180deg;" title="COPYLEFT SYMBOL">&copy</span> Conmann 2023 ALL WRONGS RESERVED<span title="check the full license for details">*</span></a></sub>
 				</div>
-				<a href="https://github.com/c3nn/.com/blob/redesign/LICENSE">Copyleft <span style="display: inline-block; rotate: 180deg;" title="COPYLEFT SYMBOL">&copy</span> Conmann 2023 ALL WRONGS RESERVED<span title="check the full license for details">*</span></a>
-				<a href="https://fonts.google.com">Fonts && Icons By Google</a>
 				<span>Favicon & profile art by the <a href="https://www.tumblr.com/mysme-cutie">Yoosung Kim Dedication blog</a>. Thank you and I will return any favor <span class="symbol" style="position: relative; top: 4px;">favorite</span></span>
+				<div class="flexTemplate" style="gap: calc(0.005 * var(--mw));">
+					<span class="symbol circleButtonHighlight" style="font-size: calc(0.02 * var(--mwt)); padding: calc(0.01 * var(--mw)); padding-top: 0; padding-bottom: 0;" tabindex=0 onclick="window.scrollTo({top: 0, behavior: 'smooth'});">arrow_upward_alt</span>
+					<div class="accesCont Unslant">
+						<span>Cursive font? <input type="button" value="OFF"></span>
+					</div>
+					<div class="accesCont Contrast">
+						<span>Reduced contrast? <input type="button" value="OFF"></span>
+					</div>
+				</div>
 			</footer>
 		</main>
 	</div>
@@ -166,38 +204,40 @@
 		<div class="hoverCont"></div>
 	</div>
 	<div id="linesMenuContCont" class="Closed">
-		<div id="linesMenuClose"></div>
+		<div id="linesMenuClose">
+			<span class="symbol">close</span>
+		</div>
 		<div id="linesMenuCont">
 			<div class="line" style="--n: 0; --c: var(--rgb0);">
-				<a href="./">Home</a>
+				<a href="/">Home</a>
 				<div class="miniLine" style="--tn: 0; --ln: 0;"></div>
 				<div class="miniLine" style="--tn: 1; --ln: 1;"></div>
 				<div class="miniLine" style="--tn: 2; --ln: 2;"></div>
 				<div class="miniLine" style="--tn: 3; --ln: 3;"></div>
 			</div>
 			<div class="line" style="--n: -1; --c: var(--rgb1);">
-				<a href="./projects">Projects</a>
+				<a href="/">About</a>
 				<div class="miniLine" style="--tn: 4; --ln: 0;"></div>
 				<div class="miniLine" style="--tn: 5; --ln: 1;"></div>
 				<div class="miniLine" style="--tn: 6; --ln: 2;"></div>
 				<div class="miniLine" style="--tn: 7; --ln: 3;"></div>
 			</div>
 			<div class="line" style="--n: -2; --c: var(--rgb2);">
-				<a href="./media">Media</a>
+				<a href="/projects">Projects</a>
 				<div class="miniLine" style="--tn: 8; --ln: 0;"></div>
 				<div class="miniLine" style="--tn: 9; --ln: 1;"></div>
 				<div class="miniLine" style="--tn: 10; --ln: 2;"></div>
 				<div class="miniLine" style="--tn: 11; --ln: 3;"></div>
 			</div>
 			<div class="line" style="--n: -3; --c: var(--rgb3);">
-				<a href="./">Lorem</a>
+				<a href="/archive/">Archive</a>
 				<div class="miniLine" style="--tn: 12; --ln: 0;"></div>
 				<div class="miniLine" style="--tn: 13; --ln: 1;"></div>
 				<div class="miniLine" style="--tn: 14; --ln: 2;"></div>
 				<div class="miniLine" style="--tn: 15; --ln: 3;"></div>
 			</div>
 			<div class="line" style="--n: -4; --c: var(--rgb4);">
-				<a href="./">Ipsom</a>
+				<a href="/contact">Contact</a>
 				<div class="miniLine" style="--tn: 16; --ln: 0;"></div>
 				<div class="miniLine" style="--tn: 17; --ln: 1;"></div>
 				<div class="miniLine" style="--tn: 18; --ln: 2;"></div>
@@ -212,8 +252,8 @@
 		<div class="line" style="--c: var(--rgb3);"></div>
 		<div class="line" style="--c: var(--rgb4);"></div>
 	</div>
-	<script type="module" src="./global.js"></script>
-	<script type="module" src="./index.js"></script>
-	<script type="module" src="./a/3rd/remnentsOfAttraction.js"></script>
+	<script type="module" src="/global.js"></script>
+	<script type="module" src="/index.js"></script>
+	<script type="module" src="/a/3rd/remnentsOfAttraction.js"></script>
 </body>
 </html>

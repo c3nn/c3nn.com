@@ -3,6 +3,15 @@
 // https://e4494s.neocities.org/generative-art-gallery#:~:text=Remnants%20of%20Attraction
 //
 
+function css(name, val = null){
+	let obj = document.querySelector(':root');
+	if(val != null){ // sets property
+		obj.style.setProperty(name, val);
+	}else{ // gets property if val == null
+		return getComputedStyle(obj).getPropertyValue(name);
+	}
+}
+
 function randSign() {
 	return Math.round(Math.random()) == 0 ? 1 : -1;
 }
@@ -12,7 +21,7 @@ function randBetween(min, max) {
 
 var canvas = document.querySelector('#heroBgCanvas')
 
-const ctx = canvas.getContext("2d");
+var ctx = canvas.getContext("2d");
 
 let friction = 0.2;
 let numBlackHoles = 25;
@@ -26,7 +35,6 @@ let opacity = 0.25;
 let edgeSpawning = true;
 let stepsPerFrame = 100000;
 let spawningVelocity = 4;
-let colorVariation = 0;
 
 function randCanvasEdgePos() {
   let r = Math.floor(Math.random() * 4);
@@ -121,8 +129,8 @@ function draw() {
   frame();
 }
 function resize(){
-	let newHeight = getComputedStyle(canvas).height.replace('px',''),
-		newWidth = getComputedStyle(canvas).width.replace('px','');
+	let newHeight = Math.max(getComputedStyle(canvas).height.replace('px',''), (css("--Mobile") == "true"?1920:1080)),
+		newWidth = Math.max(getComputedStyle(canvas).width.replace('px',''), (css("--Mobile") == "true"?1080:1920));
 	if(newWidth > canvas.width || newHeight > canvas.height){
 		canvas.width = newWidth;
 		canvas.height = newHeight;
@@ -132,4 +140,5 @@ function resize(){
 window.addEventListener('resize', resize);
 resize();
 draw();
+
 })()

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap');
-@import url("./a/3rd/materialSymbolsRounded.css");
+@import url("/a/3rd/materialSymbolsRounded.css");
 .symbol{
 	font-variation-settings:
 	'FILL' 0,
@@ -38,10 +38,14 @@
 
 	VI.	use calc(_.__ * var(--mw)) in place of px when applicable in <main>
 		exceptions are things like border-radius with % looking weird
+
+	VII. use --mwt in place of --mw when in font-size or text related
 */
 
 :root{
-	/* Controlled by JS */
+	/* Controlled / used by JS */
+	--Mobile: false;
+	--SupportsCSSHasSelector: false;
 	--ItalicFont: 'Victor Mono';
 
 	/* Colors */
@@ -50,7 +54,6 @@
 	--bgAccent1: #252525;
 	--accent0: #ffd4ac;
 	--accent1: #d8a473;
-	--accentDark0: #453a2f;
 	--text: var(--accent0);
 	--rgb0: #c71b1b;
 	--rgb1: #cd732a;
@@ -58,14 +61,30 @@
 	--rgb3: #449a31;
 	--rgb4: #106193;
 
-	--mw: min(1300px, 90vw); /* percentage of the main width */
+	--mw: min(1300px, 90vw); /* % of the main width */
+	--mwt: var(--mw);	/* % of the main width changed to a static value
+						when using mobile (for use only on font-size) */
 
 	background: var(--bg);
-	color: var(--accent0);
+	color: var(--text);
 	font-family: 'Red Hat Text', sans-serif;
 	padding: 0;
 	margin: 0;
 	overflow-x: hidden;
+}
+:root[data-contrast]{
+	--bg: #000;
+	--bgAccent0: #333333;
+	--bgAccent1: #fff;
+	--text: #fff;
+}
+:root[data-contrast] * :is(.accesCont:hover, .accesCont:has(input:focus), .socialButton:hover, .socialButton:focus){
+	filter: none !important;
+}
+@supports selector(:has(*)) {
+	:root{
+		--SupportsCSSHasSelector: true;
+	}
 }
 body{
 	padding: 0;
@@ -77,6 +96,9 @@ body{
 	width: 100%;
 }
 main{
+	/* stops bug where random padding? (i think) makes a random margin
+	to the right of the page (on mobile especially)  */
+	overflow-x: hidden;
 	width: var(--mw);
 }
 ::-webkit-scrollbar{
@@ -129,89 +151,18 @@ main{
 	animation-delay: 0s;
 }
 
-/** Footer */
-footer{
-	text-align: center;
-	align-items: center;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	row-gap: calc(0.02 * var(--mw));
-	height: auto;
-	padding: calc(0.01 * var(--mw));
-	font-size: calc(0.015 * (var(--mw)));
-	border: solid var(--bgAccent0) calc(0.005 * var(--mw));
-	border-bottom: none;
-	border-radius: calc(0.03 * var(--mw)) calc(0.03 * var(--mw)) 0 0;
-	color: var(--bgAccent1);
-}
-/* unslant button/cont (can be used throughout page) */
-.unslantCont{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: calc(0.03 * var(--mw));
-	background: var(--bgAccent0);
-	border-radius: calc(0.01 * var(--mw));
-	font-size: calc(0.01 * var(--mw));
-	transition: filter 0.4s ease;
-}
-.unslantCont span{
-	text-align: center;
-	padding: calc(0.01 * var(--mw));
-	padding-top: 0;
-	padding-bottom: 0;
-	color: var(--bgAccent1);
-}
-.unslantCont input{
-	background: var(--bgAccent1);
-	border: none;
-	border-radius: calc(0.002 * var(--mw));
-	padding: calc(0.002 * var(--mw));
-	font-size: inherit;
-	cursor: pointer;
-}
-.unslantCont:hover, .unslantCont:has(input:focus){
-	filter: brightness(3);
-}
-/* social links */
-.socialButton{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: var(--w, calc(0.03 * var(--mw)));
-	aspect-ratio: 1/1;
-	background: var(--bgAccent1);
-	fill: var(--bgAccent0);
-	border-radius: calc(0.004 * var(--mw));
-	transition: filter 0.4s ease;
-}
-.socialButton:hover,.socialButton:focus{
-	filter: brightness(3);
-}
-.socialButton .symbol{
-	transition: filter 0.4s ease;
-}
-:is(.socialButton:hover, .socialButton:focus) .symbol{
-	filter: brightness(calc(1/3));
-	text-shadow: 0 0 calc(0.02 * var(--mw)) #fff;
-}
-.socialButton svg{
-	height: 90%;
-	aspect-ratio: 1/1;
-}
-
 /** Lines */
 #linesCont{
 	--_speed: 1.8s;
 	--_lines: 5;
 	--_width: 30vw;
 	--_contHeight: 40svh;
-	--_lineHeightTimingFunct: cubic-bezier(.55,1.4,.69,.17);
+	--_lineWidthTimingFunct: cubic-bezier(.55,1.4,.69,.17);
 	width: var(--_width);
 	height: var(--_contHeight);
 	position: fixed;
 	top: 0;
-	right: 0;
+	right: 0px;
 	pointer-events: none;
 }
 #linesCont *{
@@ -221,25 +172,24 @@ footer{
 	0%	 {bottom: 100%;}
 	100% {bottom: 0%;}
 }
-@keyframes linesHeight {
+@keyframes linesWidth {
 	0%	 {width: var(--_width);}
 	100% {width: 0;}
 }
 #linesCont .line{
-	--_height: calc(100% / (var(--_lines)));
+	--_height: calc(100% / var(--_lines));
 	background: var(--c);
 	height: var(--_height);
 	position: absolute;
-	animation: linesMove var(--_speed) linear infinite, linesHeight var(--_speed) var(--_lineHeightTimingFunct) infinite;
+	animation: linesMove var(--_speed) linear infinite, linesWidth var(--_speed) var(--_lineWidthTimingFunct) infinite;
 	animation-delay: calc(var(--n) * var(--_speed) / var(--_lines));
 	right: 0;
 	transition: width ease 1s;
 }
 #linesCont .line[data-anim="hover"]{
-	--_lineHeightTimingFunct: ease-in;
+	--_lineWidthTimingFunct: ease-in;
 }
 #linesCont .line[data-anim="closed"]{
-	/* --_lineHeightTimingFunct: ease-in; */
 	width: 0;
 	animation: none;
 }
@@ -281,7 +231,7 @@ footer{
 	box-shadow: -500px 0 0 0 var(--bgAccent0),
 				inset 0 0 0 0 var(--c);
 }
-#linesMenuCont .line:hover{
+#linesMenuCont .line:hover, #linesMenuCont .line:focus{
 	box-shadow: -500px 0 0 0 var(--bgAccent0),
 				inset 0 -4px 0 0 var(--c);
 	transition:	width 1s cubic-bezier(.07,.5,0,.95),
@@ -360,8 +310,82 @@ footer{
 	width: 100%;
 	height: 100%;
 }
+#linesMenuClose .symbol{
+	display: none;
+}
 #linesMenuContCont.Closed #linesMenuClose{
 	display: none;
+}
+
+/** Footer */
+footer{
+	text-align: center;
+	align-items: center;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	row-gap: calc(0.02 * var(--mw));
+	height: auto;
+	padding: calc(0.01 * var(--mw));
+	font-size: calc(0.015 * (var(--mwt)));
+	border: solid var(--bgAccent0) calc(0.005 * var(--mw));
+	border-bottom: none;
+	border-radius: calc(0.03 * var(--mw)) calc(0.03 * var(--mw)) 0 0;
+	color: var(--bgAccent1);
+}
+/* accesCont button/cont (can be used throughout page) */
+.accesCont{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: calc(0.03 * var(--mw));
+	background: var(--bgAccent0);
+	border-radius: calc(0.01 * var(--mw));
+	font-size: calc(0.01 * var(--mwt));
+	transition: filter 0.4s ease;
+}
+.accesCont span{
+	text-align: center;
+	padding: calc(0.01 * var(--mw));
+	padding-top: 0;
+	padding-bottom: 0;
+	color: var(--bgAccent1);
+}
+.accesCont input{
+	background: var(--bgAccent1);
+	border: none;
+	border-radius: calc(0.002 * var(--mw));
+	padding: calc(0.002 * var(--mw));
+	font-size: inherit;
+	cursor: pointer;
+}
+.accesCont:hover, .accesCont:has(input:focus){
+	filter: brightness(3);
+}
+/* social links */
+.socialButton{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: var(--w, calc(0.03 * var(--mw)));
+	aspect-ratio: 1/1;
+	background: var(--bgAccent1);
+	fill: var(--bgAccent0);
+	border-radius: 15%;
+	transition: filter 0.4s ease;
+}
+.socialButton:hover,.socialButton:focus{
+	filter: brightness(3);
+}
+.socialButton .symbol{
+	transition: filter 0.4s ease;
+}
+:is(.socialButton:hover, .socialButton:focus) .symbol{
+	filter: brightness(calc(1/3));
+	text-shadow: 0 0 calc(0.02 * var(--mw)) #fff;
+}
+.socialButton svg{
+	height: 90%;
+	aspect-ratio: 1/1;
 }
 
 /** General */
@@ -369,6 +393,9 @@ footer{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+.flexTemplate.Column{
+	flex-direction: column;
 }
 .pageSpace{
 	display: flex;
@@ -397,20 +424,17 @@ h1 a, h2 a, h3 a{
 	color: var(--bg);
 }
 .circleButtonHighlight{
-	cursor: pointer;
-	transition: background 0.4s ease,
-				outline 0.4s ease;
 	border-radius: 5138008px;
+	cursor: pointer;
 	text-align: center;
+	background: var(--bgAccent0);
+	transition: filter 0.4s ease;
 }
 .circleButtonHighlight:hover, .circleButtonHighlight:focus{
-	background: var(--bgAccent1);
-	outline: solid calc(0.003 * var(--mw)) var(--bgAccent1);
-	transition: background 0.4s ease,
-				outline 0.3s ease;
+	filter: brightness(3);
 }
 h1, h2, h3{
-	font-size: calc(0.06 * var(--mw));
+	font-size: calc(0.06 * var(--mwt));
 	font-family: 'Lobster', sans-serif;
 	font-style: italic;
 	font-weight: 100;
@@ -419,14 +443,109 @@ h1, h2, h3{
 	cursor: default;
 }
 h2, h3{
-	font-size: calc(0.03 * var(--mw));
+	font-size: calc(0.03 * var(--mwt));
 	margin-bottom: calc(0.03 * var(--mw));
 }
 h3{
-	font-size: calc(0.02 * var(--mw));
+	font-size: calc(0.02 * var(--mwt));
 }
 p{
-	font-size: calc(0.015 * var(--mw));
+	font-size: calc(0.015 * var(--mwt));
 	font-family: var(--ItalicFont);
 	font-style: italic;
+}
+
+/** Mobile */
+/* @media screen and ((orientation: portrait) or (pointer: none) or (pointer: coarse)) { */
+@media screen and (orientation: portrait) {
+	
+	:root{
+		--Mobile: true;
+		--mwt: 80svh;
+	}
+	
+	/* Lines */
+	#linesCont{
+		--_lineWidthTimingFunct: cubic-bezier(0,1.3,1,.3);
+		--_width: 1.5vw;
+		--_contHeight: 100svh;
+	}
+	@keyframes linesMove {
+		0%	 {bottom: 100%;}
+		100% {bottom: calc(var(--_height) * -1);}
+	}
+	@keyframes linesWidth {
+		0%	 {width: var(--_width);}
+		100% {width: var(--_width);}
+	}
+	#linesCont .line{
+		--_height: calc(100% / (var(--_lines) - 1));
+		overflow: hidden;
+	}
+	#linesCont .hoverCont{
+		height: 100%;
+		width: calc(3 * var(--_width));
+	}
+
+	/** Lines Menu */
+	#linesMenuCont .line .miniLine{
+		display: none;
+	}
+	#linesMenuCont .line{
+		--_width: 100vw;
+		box-shadow: -500px 0 0 0 var(--bgAccent0),
+					inset 0 -4px 0 0 var(--c);
+		transition:	width 1s cubic-bezier(.07,.5,0,.95),
+					box-shadow 1s cubic-bezier(.07,.5,0,.95);
+	}
+	#linesMenuContCont.Open #linesMenuCont .line{
+		left: 0;
+		transition: left 1s cubic-bezier(.06,.5,0,1);
+	}
+	#linesMenuCont .line a{
+		text-align: center;
+	}
+	#linesMenuCont .line a::after{
+		content: "";
+	}
+	#linesMenuClose{
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 3vh;
+		width: 100vw;
+		z-index: 2;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+	}
+	#linesMenuClose .symbol{
+		display: block;
+		font-size: 3vh;
+		padding-top: 1vh;
+		position: relative;
+	}
+	@keyframes linesMenuCloseSymbol {
+		0%	 {top: -4vh;}
+		100% {top: 0vh;}
+	}
+	#linesMenuContCont.Open #linesMenuClose .symbol{
+		animation: linesMenuCloseSymbol 1s ease forwards;
+	}
+
+	/** Footer */
+	footer{
+		grid-template-columns: 1fr;
+		font-size: calc(0.025 * (var(--mwt)));
+		gap: calc(0.05 * var(--mw));
+		border: none;
+		border-top: solid var(--bgAccent1) calc(0.02 * var(--mwt));
+		border-radius: 0;
+	}
+	/* social links */
+	.socialButton{
+		width: calc(0.05 * var(--mwt));
+	}
+
 }
