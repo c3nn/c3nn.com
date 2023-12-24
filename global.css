@@ -71,6 +71,7 @@
 	padding: 0;
 	margin: 0;
 	overflow-x: hidden;
+	font-display: swap;
 }
 :root[data-contrast]{
 	--bg: #000;
@@ -111,6 +112,15 @@ main{
 }
 ::-webkit-scrollbar-corner{
 	background: var(--bgAccent0);
+}
+#tabButton{
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+#tabButton:focus-visible{
+	opacity: 1;
 }
 
 /** Loading Lines */
@@ -156,7 +166,7 @@ main{
 	--_speed: 1.8s;
 	--_lines: 5;
 	--_width: 30vw;
-	--_contHeight: 40svh;
+	--_contHeight: 40dvh;
 	--_lineWidthTimingFunct: cubic-bezier(.55,1.4,.69,.17);
 	width: var(--_width);
 	height: var(--_contHeight);
@@ -511,24 +521,31 @@ p{
 	#linesMenuClose{
 		position: fixed;
 		top: 0;
-		left: 0;
-		height: 3vh;
-		width: 100vw;
+		left: auto;
+		right: 0;
+		height: 100dvh;
+		width: 4vw;
 		z-index: 2;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
+		background: black;
+		overflow: hidden;
 	}
 	#linesMenuClose .symbol{
 		display: block;
-		font-size: 3vh;
-		padding-top: 1vh;
+		font-size: 100%;
 		position: relative;
 	}
+	@keyframes linesMenuClose {
+		0% {width: 0;}
+	}
+	#linesMenuContCont.Open #linesMenuClose{
+		animation: linesMenuClose 1s ease forwards;
+	}
 	@keyframes linesMenuCloseSymbol {
-		0%	 {top: -4vh;}
-		100% {top: 0vh;}
+		0% {rotate: 45deg;}
 	}
 	#linesMenuContCont.Open #linesMenuClose .symbol{
 		animation: linesMenuCloseSymbol 1s ease forwards;
