@@ -71,7 +71,6 @@
 	padding: 0;
 	margin: 0;
 	overflow-x: hidden;
-	font-display: swap;
 }
 :root[data-contrast]{
 	--bg: #000;
@@ -124,14 +123,6 @@ main{
 }
 
 /** Loading Lines */
-@keyframes loadingLinesFinishedFall {
-	from {top: 0%; height: 100%;}
-	to {top: 100%; height: 00%;}
-}
-@keyframes loadingLinesFinishedBrightness {
-	from {filter: brightness(0.2);}
-	to {filter: brightness(1);}
-}
 #loadingLinesCont{
 	top: 0;
 	left: 0;
@@ -141,6 +132,7 @@ main{
 	height: 100%;
 	width: 100%;
 	pointer-events: none;
+	filter: brightness(0.2);
 }
 #loadingLinesCont .line{
 	position: relative;
@@ -148,17 +140,6 @@ main{
 	box-shadow: 0 1px var(--c);
 	width: 100%;
 	height: 100%;
-}
-#loadingLinesCont:not([data-start]) .line{
-	animation: loadingLinesFinishedFall 1s cubic-bezier(1,.31,.91,.98) forwards;
-	animation-delay: 5s;
-	filter: brightness(0.2);
-}
-#loadingLinesCont[data-start] .line{
-	filter: brightness(0.2);
-	animation: loadingLinesFinishedFall 1s cubic-bezier(1,.31,.91,.98) forwards,
-	loadingLinesFinishedBrightness 0.5s ease-in forwards;
-	animation-delay: 0s;
 }
 
 /** Lines */
@@ -474,7 +455,7 @@ p{
 		--mwt: 80svh;
 	}
 	
-	/* Lines */
+	/** Lines */
 	#linesCont{
 		--_lineWidthTimingFunct: cubic-bezier(0,1.3,1,.3);
 		--_width: 1.5vw;
