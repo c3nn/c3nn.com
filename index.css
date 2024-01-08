@@ -1,6 +1,7 @@
 :root{
 	--HeroScrollPer: 0;
 	--ScrollY: 0;
+	background-position: 0 112vh;
 }
 
 /** Lines */
@@ -114,8 +115,8 @@
 	justify-content: center;
 	align-items: center;
 	position: absolute;
-	bottom: calc(-0.03 * var(--mw));
-	gap: calc(0.005 * var(--mw));
+	top: 100svh;
+	gap: calc(0.005 * var(--mwt));
 	border-radius: 5318008px;
 	background: var(--bgAccent1);
 	overflow: visible;
@@ -125,6 +126,11 @@
 }
 :root[data-contrast] * #heroAccesMenu .symbol{
 	color: var(--bgAccent0);
+}
+#heroAccesMenuMargin{
+	--_scale: 1;
+	--_mwt: calc(var(--mwt) * var(--_scale));
+	--h: calc(0.05 * var(--_mwt));
 }
 
 /* line decor */
@@ -279,4 +285,7 @@
 		animation: none;
 	}
 
+	#heroAccesMenuMargin{
+		--_scale: 2;
+	}
 }

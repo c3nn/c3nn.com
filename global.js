@@ -182,7 +182,6 @@ if(hasCookie('accesUnslant') == true){
 
 let contrastButtons = $all('.accesCont.Contrast input');
 function toggleContrast(){
-	// $(':root').dataset.contrast
 	if($(':root').dataset.contrast != "true"){
 		contrastButtons.forEach(e => { e.value = 'ON'; });
 		$(':root').dataset.contrast = true;
