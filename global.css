@@ -54,8 +54,8 @@
 	--bg: #030100;
 	--bgAccent0: #060606;
 	--bgAccent1: #252525;
-	--accent0: #ffd4ac;
-	--accent1: #d8a473;
+	--accent0: #dfb894;
+	--accent1: #c38851;
 	--text: var(--accent0);
 	--rgb0: #c71b1b;
 	--rgb1: #cd732a;
@@ -73,9 +73,11 @@
 	background-image: linear-gradient(color-mix(in srgb, var(--bg) 80%, transparent),transparent,color-mix(in srgb, var(--bg) 80%, transparent)), var(--backgroundImg);
 	background-size: 100vw 100vh, max(100vw, 300px) auto;
 	background-repeat:  repeat-y, repeat-y;
-	background-position: left calc(var(--ScrollY) * 1px), left calc((var(--ScrollY) / 3) * 1px + var(--backgroundYOffset, 0px));
+	background-position: left calc(var(--ScrollY) * 1px), left calc((var(--ScrollY) / 2.25) * 1px + var(--backgroundYOffset, 0px));
+	
 	color: var(--text);
 	font-family: 'Red Hat Text', sans-serif;
+	
 	padding: 0;
 	margin: 0;
 	overflow-x: hidden;
@@ -183,6 +185,8 @@ main{
 	top: 0;
 	right: 0px;
 	pointer-events: none;
+	background: none;
+	
 	& *{
 		pointer-events: all;
 	}
@@ -194,7 +198,9 @@ main{
 		animation: linesMove var(--_speed) linear infinite, linesWidth var(--_speed) var(--_lineWidthTimingFunct) infinite;
 		animation-delay: calc(var(--n) * var(--_speed) / var(--_lines));
 		right: 0;
-		transition: width ease 1s;
+		transition: width ease 1s, opacity ease 0.2s;
+		opacity: 0.8;
+		backdrop-filter: blur(10px);
 
 		&[data-anim="hover"]{
 			--_lineWidthTimingFunct: ease-in;
@@ -217,12 +223,12 @@ main{
 	.hoverCont:focus-visible{
 		outline: none;
 	}
-	&:focus-within{
-		filter: brightness(0.7);
-	}
 }
 :has(#linesMenuContCont.Open) #linesCont .hoverCont{
 	display: none;
+}
+#linesCont:has(.hoverCont:hover) .line{
+	opacity: 1;
 }
 
 /** Lines Menu */
@@ -259,6 +265,7 @@ main{
 		transition:	width 1s cubic-bezier(.07,.5,0,.95);
 		box-shadow: -500px 0 0 0 var(--bgAccent0),
 					inset 0 0 0 0 var(--c);
+		cursor: pointer;
 
 		&:is(:hover, :focus-within){
 			box-shadow: -500px 0 0 0 var(--bgAccent0),
