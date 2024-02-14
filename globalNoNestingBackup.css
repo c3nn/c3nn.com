@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap&display=swap'); /* used if cursive is off */
-@import url("/a/3rd/materialSymbolsRounded.css");
+@import url("a/3rd/materialSymbolsRounded.css");
 .symbol{
 	font-variation-settings:
 	'FILL' 0,
@@ -66,7 +66,7 @@
 	--mwt: var(--mw);	/* % of the main width changed to a static value
 						when using mobile (for use only on font-size) */
 
-	--backgroundImg: url("/a/bg.avif");
+	--backgroundImg: url("a/bg.avif");
 	background-color: var(--bg);
 	background-image: linear-gradient(color-mix(in srgb, var(--bg) 80%, transparent),transparent,color-mix(in srgb, var(--bg) 80%, transparent)), var(--backgroundImg);
 	background-size: 100vw 100vh, max(100vw, 300px) auto;

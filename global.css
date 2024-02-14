@@ -1,16 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@1,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap&display=swap'); /* used if cursive is off */
-@import url("/a/3rd/materialSymbolsRounded.css");
-.symbol{
-	font-variation-settings:
-	'FILL' 0,
-	'wght' 400,
-	'GRAD' 0,
-	'opsz' 24;
-	user-select: none;
-}
+@import url("a/3rd/globalGoogleFonts.css");
+@import url("a/3rd/materialSymbolsRounded.css");
 
 /*
 	* HAY this is a little area for code / design guidelines
@@ -20,7 +9,7 @@
 		Or is a descriptor included for another class
 			ex: #hero h1 .Blue{} && #hero h1 .Red{} ||
 				|| #menu.Open && #menu.Closed
-	
+
 	III. underscore for local variables
 		ex: --_contHeight
 
@@ -47,7 +36,7 @@
 	--Mobile: false;
 	--SupportsCSSHasSelector: "probably";
 	--SupportsCSSNesting: "probably";
-	--ItalicFont: 'Victor Mono';
+	--ItalicFont: 'Victor Mono Italic';
 	--ScrollY: 0;
 
 	/* Colors */
@@ -62,12 +51,20 @@
 	--rgb2: #cfd941;
 	--rgb3: #449a31;
 	--rgb4: #106193;
+	--codeBg: #1f1f1f;
+	--codeWhite: #dee0ef;
+	--codeGray: #8d8f9e;
+	--codeBlue: #a0b6e8;
+	--codeLightBlue: #aac9d4;
+	--codePeach: #d6b4b4;
+	--codePurple: #a392dc;
+	--codeGreen: #98c379;
 
 	--mw: min(1300px, 90vw); /* % of the main width */
 	--mwt: var(--mw);	/* % of the main width changed to a static value
 						when using mobile (for use only on font-size) */
 
-	--backgroundImg: url("/a/bg.avif"); /* use "Very Slow" encoding setting on
+	--backgroundImg: url("a/bg.avif"); /* use "Very Slow" encoding setting on
 										paint.net for .avif's or it breaks firefox */
 	background-color: var(--bg);
 	background-image: linear-gradient(color-mix(in srgb, var(--bg) 80%, transparent),transparent,color-mix(in srgb, var(--bg) 80%, transparent)), var(--backgroundImg);
@@ -81,6 +78,7 @@
 	padding: 0;
 	margin: 0;
 	overflow-x: hidden;
+	scroll-behavior: smooth;
 }
 :root[data-contrast], .accesCont.Contrast{
 	--bg: #000;
@@ -492,10 +490,12 @@ a:any-link{
 		text-decoration-color: var(--bgAccent1);
 	}
 }
-:is(h1, h2, h3) a{
+:is(h1, h2, h3, h4) a{
 	text-decoration: underline;
 	text-decoration-color: var(--bgAccent1);
 }
+/* selection & -moz-selection have
+	to be separate, breaks if not */
 *::selection{
 	background: var(--accent1);
 	color: var(--bg);
@@ -515,6 +515,9 @@ a:any-link{
 		filter: brightness(3);
 	}
 }
+h1{
+	text-align: center;
+}
 h1, h2, h3, h4{
 	font-size: calc(0.08 * var(--mwt));
 	font-family: 'Lobster', sans-serif;
@@ -530,7 +533,7 @@ h2, h3, h4{
 }
 h3, h4{
 	font-size: calc(0.03 * var(--mwt));
-	margin-bottom: calc(0.03 * var(--mw));
+	margin-bottom: 0;
 }
 h4{
 	font-size: calc(0.02 * var(--mwt));
@@ -539,6 +542,83 @@ p{
 	font-size: calc(0.015 * var(--mwt));
 	font-family: var(--ItalicFont);
 	font-style: italic;
+}
+dl{
+	padding-left: calc(0.05 * var(--mw));
+}
+dt,dd{
+	display: list-item;
+	list-style-type: lower-alpha;
+	list-style-position: inside;
+	font-family: var(--ItalicFont);
+	font-size: calc(0.016 * var(--mwt));
+	margin: calc(0.004 * var(--mw));
+}
+dd{
+	font-size: calc(0.012 * var(--mwt));
+	list-style-type: decimal;
+	padding-left: calc(0.025 * var(--mwt));
+}
+img{
+	display: block;
+	--w: 0.5;
+	width: calc(var(--w) * var(--mw));
+	height: auto;
+	margin: 0 auto 0 auto;
+	border: solid 1px var(--accent0);
+	border-radius: calc(0.01 * var(--mw));
+}
+img + .imgDesc{
+	margin: 0 auto auto auto;
+	padding: 0.3em;
+	width: fit-content;
+	border: solid 1px var(--accent0);
+	border-top: none;
+	border-radius: 0 0 0.6em 0.6em;
+	background: var(--bg);
+}
+code{
+	background-color: var(--codeBg);
+	border-radius: 0.1em;
+	font-family: 'Victor Mono'; /*	different from 'Victor Mono Italic'
+									used in var(--ItalicFont) */
+	font-style: normal;
+	padding: 0.05em 0.2em;
+	white-space: nowrap;
+
+	color: var(--codeWhite); /* defaults to white */
+
+	& span{
+		--synColor: var(--codeWhite); /* defaults to white */
+		color: var(--synColor);
+	}
+	.gray{
+		--synColor: var(--codeGray);
+	}
+	.blue{
+		--synColor: var(--codeBlue);
+	}
+	.lightBlue{
+		--synColor: var(--codeLightBlue);
+	}
+	.peach{
+		--synColor: var(--codePeach);
+	}
+	.purple{
+		--synColor: var(--codePurple);
+	}
+	.green{
+		--synColor: var(--codeGreen);
+	}
+}
+kbd {
+	display: inline-block;
+	background-color: var(--bgAccent1);
+	border: 1px solid var(--accent0);
+	border-radius: 0.25em;
+	line-height: 1;
+	padding: 0.15em 0.25em;
+	white-space: nowrap;
 }
 
 /** Mobile */
