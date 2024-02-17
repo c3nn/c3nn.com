@@ -542,6 +542,7 @@ p{
 	font-size: calc(0.015 * var(--mwt));
 	font-family: var(--ItalicFont);
 	font-style: italic;
+	line-height: 1.5em;
 }
 dl{
 	padding-left: calc(0.05 * var(--mw));
