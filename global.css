@@ -70,8 +70,10 @@
 	background-image: linear-gradient(color-mix(in srgb, var(--bg) 80%, transparent),transparent,color-mix(in srgb, var(--bg) 80%, transparent)), var(--backgroundImg);
 	background-size: 100vw 100vh, max(100vw, 300px) auto;
 	background-repeat:  repeat-y, repeat-y;
-	background-position: left calc(var(--ScrollY) * 1px), left calc((var(--ScrollY) / 2.25) * 1px + var(--backgroundYOffset, 0px));
-	
+	background-position: left top, left calc((var(--ScrollY) / -2.25) * 1px + var(--backgroundYOffset, 0px));
+    transition: background-position 0s linear; /* gpu acceleration */
+	background-attachment: fixed;
+
 	color: var(--text);
 	font-family: 'Red Hat Text', sans-serif;
 	
@@ -125,19 +127,6 @@ main{
 }
 ::-webkit-scrollbar-corner{
 	background: var(--bgAccent0);
-}
-#tabButton{
-	position: absolute;
-	left: 0;
-	top: 0;
-	opacity: 0;
-	z-index: 5138008;
-	background: #ffffff;
-
-	&:focus-visible{
-		opacity: 1;
-	}
-
 }
 
 /** Loading Lines */
@@ -435,7 +424,7 @@ footer{
 		box-shadow: 1px 1px 0 3px var(--accent1);
 	}
 }
-.socialButton{
+a.socialButton{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -504,13 +493,17 @@ a:any-link{
 	background: var(--accent1);
 	color: var(--bg);
 }
-.circleButtonHighlight{
+span.circleButtonHighlight{
 	border-radius: 5138008px;
 	cursor: pointer;
 	text-align: center;
 	background: var(--bgAccent0);
 	transition: filter 0.4s ease;
-
+	padding: calc(0.01 * var(--mw));
+	padding-top: 0;
+	padding-bottom: 0;
+	font-size: calc(0.02 * var(--mwt));
+	
 	&:is(:hover,:focus){
 		filter: brightness(3);
 	}
@@ -538,16 +531,16 @@ h3, h4{
 h4{
 	font-size: calc(0.02 * var(--mwt));
 }
-p{
+p, code, kbd, span.circleButtonHighlight:not(.symbol){
 	font-size: calc(0.015 * var(--mwt));
 	font-family: var(--ItalicFont);
 	font-style: italic;
 	line-height: 1.5em;
 }
-dl{
+dl, ul{
 	padding-left: calc(0.05 * var(--mw));
 }
-dt,dd{
+dt,dd, li{
 	display: list-item;
 	list-style-type: lower-alpha;
 	list-style-position: inside;
@@ -560,6 +553,9 @@ dd{
 	list-style-type: decimal;
 	padding-left: calc(0.025 * var(--mwt));
 }
+:is(dl, ul).dotted > *{
+	list-style-type: disc;
+}
 img{
 	display: block;
 	--w: 0.5;
@@ -569,7 +565,7 @@ img{
 	border: solid 1px var(--accent0);
 	border-radius: calc(0.01 * var(--mw));
 }
-img + .imgDesc{
+img + p.imgDesc{
 	margin: 0 auto auto auto;
 	padding: 0.3em;
 	width: fit-content;
@@ -612,7 +608,7 @@ code{
 		--synColor: var(--codeGreen);
 	}
 }
-kbd {
+kbd{
 	display: inline-block;
 	background-color: var(--bgAccent1);
 	border: 1px solid var(--accent0);
