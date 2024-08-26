@@ -1,25 +1,77 @@
-import { $, $all, css } from "/lib/c3nnUtil.js";
+import { $, css } from "/lib/c3nnUtil.js";
 
-if(css('--SupportsCSSHasSelector') != "true" || css('--SupportsCSSNesting') != "true"){
-	$('#enableJS').innerHTML = '( this site uses CSS Baseline 2023 features, please update your browser for the best experience )';
-	setTimeout(() => { $('#enableJS').remove(); }, 20000);
-}else{
-	$('#enableJS').remove();
+const heroBgCanvas = $('#heroBgCanvas'),
+	c = heroBgCanvas.getContext('2d', { alpha: false });
+
+const circleRadius = 5,
+	circleColumnSpacing = 15,
+	circleRowSpacing = 15,
+	circleColor = '#111',
+	noiseScale = 0.005,
+	noiseMoveAmp = 14,
+	noiseSizeAmp = 6,
+	xOffsetSpeed = 0.01,
+	yOffsetSpeed = 0.005;
+
+var xOffset = 0,
+	yOffset = 0;
+
+var circleColumns,
+	circleRows,
+	loops,
+	resizeOnNextUpdate = false,
+	deltaTime,
+	then = Date.now()-10;
+
+function windowResize(){
+	heroBgCanvas.width = window.innerWidth;
+	heroBgCanvas.height = window.innerHeight;
+	
+	circleColumns = Math.floor(heroBgCanvas.width / circleColumnSpacing);
+	circleRows = Math.floor(heroBgCanvas.height / circleRowSpacing);
+	loops = circleColumns * circleRows;
+
+	c.fillStyle = circleColor;
+
+	css('--screenWidth',window.innerWidth);
+	css('--screenHeight',window.innerHeight);
+	
+	return;
 }
-
-window.addEventListener('scroll', (e) => {
-	css('--HeroScrollPer',Math.min(window.scrollY/(window.innerHeight/2),1));
+windowResize();
+window.addEventListener('resize', ()=> {
+	resizeOnNextUpdate = true;
 });
 
-$all('.iframeProjShowcase .iframeCont .zoomCont .minus').forEach(element => {
-	element.addEventListener('click', (e) => {
-		let iframeCont = element.parentElement.parentElement;
-		iframeCont.css('--z', Math.min(iframeCont.css('--z',null,{num:true}) + 0.1, 10));
-	});
-});
-$all('.iframeProjShowcase .iframeCont .zoomCont .plus').forEach(element => {
-	element.addEventListener('click', (e) => {
-		let iframeCont = element.parentElement.parentElement;
-		iframeCont.css('--z', Math.max(iframeCont.css('--z',null,{num:true}) - 0.1, 0.2));
-	});
-});
+function update(){
+	if(resizeOnNextUpdate == true){
+		windowResize();
+		resizeOnNextUpdate = false;
+	}
+
+	c.clearRect(0,0,heroBgCanvas.width,heroBgCanvas.height);
+	for (let i = 0; i < loops; i++) {
+		c.beginPath();
+		let preX = circleColumnSpacing/2 + (i%circleColumns)*circleColumnSpacing,
+			preY = circleRowSpacing/2 + Math.floor(i/circleColumns)*circleRowSpacing + noiseMoveAmp;
+
+		let x = preX,
+			y = preY - (perlin.get(preX*noiseScale+xOffset, preY*noiseScale-yOffset)+1)*noiseMoveAmp,
+			radius = circleRadius + perlin.get(preX*noiseScale+xOffset, preY*noiseScale-yOffset)*noiseSizeAmp;
+
+			c.arc(x, y, radius, 0, Math.PI*2);
+			c.fill();
+		}
+
+	deltaTime = Date.now() - then;
+	then = Date.now();
+
+	xOffset += xOffsetSpeed * (deltaTime/50);
+	yOffset += yOffsetSpeed * (deltaTime/50);
+
+	setTimeout(() => {
+		window.requestAnimationFrame(update);
+	}, 50-deltaTime)
+	return;
+}
+window.requestAnimationFrame(update);
